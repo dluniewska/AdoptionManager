@@ -1,11 +1,41 @@
+global using System;
+using Microsoft.OpenApi.Models;
+
 var builder = WebApplication.CreateBuilder(args);
+
+var corsPolicyName = "ClientCors";
+var allowedOrigins = builder.Configuration.GetSection("AllowedOrigins").Get<List<string>>();
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: corsPolicyName,
+        corsBuilder =>
+        {
+            corsBuilder.WithOrigins(string.Join(", ", allowedOrigins));
+        });
+});
+
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Version = "v1",
+        Title = "AdoptionManager",
+        Description = "An ASP.NET Core Web API for managing laboratory animals adoption",
+        Contact = new OpenApiContact
+        {
+            Name = "Daria",
+            Email = "luniewska.d@gmail.com",
+            Url = new Uri("https://github.com/dluniewska")
+        }
+    });
+    var filePath = Path.Combine(AppContext.BaseDirectory, "AdoptionManager.Api.xml");
+    options.IncludeXmlComments(filePath);
+});
 
 var app = builder.Build();
 
@@ -14,9 +44,14 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseDeveloperExceptionPage();
 }
 
 app.UseHttpsRedirection();
+
+app.UseRouting();
+
+app.UseCors(corsPolicyName);
 
 app.UseAuthorization();
 
