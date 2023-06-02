@@ -8,7 +8,7 @@ namespace AdoptionManager.Api.Controllers
     /// </summary>
     [Route("api/organizations/{organizationId}/[controller]")]
     [ApiController]
-    public class AdoptionApplicationController : ControllerBase
+    public class AdoptionApplicationsController : ControllerBase
     {
         /// <summary>
         /// Get all adoption applications for organization
@@ -25,13 +25,13 @@ namespace AdoptionManager.Api.Controllers
         /// Create adoption application
         /// </summary>
         /// <param name="application"></param>
-        /// <returns></returns>
+        /// <returns>created application</returns>
         [HttpPost]
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> AddAdoptionApplication(int organizationId, object application)
         {
-            return Ok();
+            return Ok(application);
         }
     }
 }

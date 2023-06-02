@@ -29,7 +29,7 @@ namespace AdoptionManager.Api.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> AddSurvey(int organizationId, object survey)
         {
-            return Ok();
+            return Ok(survey);
         }
 
         /// <summary>

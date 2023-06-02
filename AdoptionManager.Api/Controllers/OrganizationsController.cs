@@ -5,58 +5,58 @@ using System.Net.Mime;
 namespace AdoptionManager.Api.Controllers
 {
     /// <summary>
-    /// Controller for managing animals
+    /// Controller for managing organization
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    public class AnimalsController : ControllerBase
+    public class OrganizationsController : ControllerBase
     {
         /// <summary>
-        /// Get list of animals
+        /// Get list of organizations
         /// </summary>
         /// <returns></returns>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<object>))]
-        public async Task<IActionResult> GetAnimals()
+        public async Task<IActionResult> GetOrganizations()
         {
             return Ok();
         }
 
         /// <summary>
-        /// Create new animal object
+        /// Create new organization object
         /// </summary>
-        /// <param name="animal"></param>
-        /// <returns>Created animal</returns>
+        /// <param name="organization"></param>
+        /// <returns>Created organization</returns>
         [HttpPost]
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public async Task<IActionResult> AddAnimal(object animal)
+        public async Task<IActionResult> AddOrganization(object organization)
         {
-            return Ok(animal);
+            return Ok(organization);
         }
 
         /// <summary>
-        /// Update animal by Id
+        /// Update organization by Id
         /// </summary>
-        /// <param name="animalId"></param>
-        /// <param name="animal"></param>
+        /// <param name="organizationId"></param>
+        /// <param name="organization"></param>
         /// <returns></returns>
-        [HttpPut("{animalId}")]
+        [HttpPut("{organizationId}")]
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<IActionResult> UpdateAnimal(int animalId, object animal)
+        public async Task<IActionResult> UpdateOrganization(int organizationId, object organization)
         {
             return Ok();
         }
 
         /// <summary>
-        /// Delete animal by Id
+        /// Delete organization by Id
         /// </summary>
-        /// <param name="animalId"></param>
+        /// <param name="organizationId"></param>
         /// <returns></returns>
-        [HttpDelete("{animalId}")]
+        [HttpDelete("{organizationId}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<IActionResult> DeleteAnimal(int animalId)
+        public async Task<IActionResult> DeleteOrganization(int organizationId)
         {
             return Ok();
         }
