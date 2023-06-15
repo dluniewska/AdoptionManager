@@ -20,6 +20,19 @@ namespace AdoptionManager.Api.Controllers
         }
 
         /// <summary>
+        /// Get single survey for organization
+        /// </summary>
+        /// <param name="organizationId"></param>
+        /// <param name="surveyId"></param>
+        /// <returns>survey object</returns>
+        [HttpGet("{organizationId}/surveys/{surveyId}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<object>))]
+        public async Task<IActionResult> GetSurvey(int organizationId, int surveyId)
+        {
+            return Ok();
+        }
+
+        /// <summary>
         /// Create survey for organization
         /// </summary>
         /// <param name="survey"></param>

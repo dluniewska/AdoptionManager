@@ -23,6 +23,18 @@ namespace AdoptionManager.Api.Controllers
         }
 
         /// <summary>
+        /// Get single animal
+        /// </summary>
+        /// <param name="animalId"></param>
+        /// <returns></returns>
+        [HttpGet("{animalId}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<object>))]
+        public async Task<IActionResult> GetAdoptionApplication(int animalId)
+        {
+            return Ok();
+        }
+
+        /// <summary>
         /// Create new animal object
         /// </summary>
         /// <param name="animal"></param>

@@ -14,9 +14,21 @@ namespace AdoptionManager.Api.Controllers
         /// Get all adoption applications for organization
         /// </summary>
         /// <returns></returns>
-        [HttpGet()]
+        [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<object>))]
         public async Task<IActionResult> GetAdoptionApplications(int organizationId)
+        {
+            return Ok();
+        }
+
+        /// <summary>
+        /// Get single adoption application for organization
+        /// </summary>
+        /// <param name="adoptionApplicationId"></param>
+        /// <returns>adoption application object</returns>
+        [HttpGet("{adoptionApplicationId}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(object))]
+        public async Task<IActionResult> GetAdoptionApplication(int adoptionApplicationId)
         {
             return Ok();
         }

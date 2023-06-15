@@ -22,6 +22,18 @@ namespace AdoptionManager.Api.Controllers
         }
 
         /// <summary>
+        /// Get single organization
+        /// </summary>
+        /// <param name="organizationId"></param>
+        /// <returns></returns>
+        [HttpGet("{organizationId}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<object>))]
+        public async Task<IActionResult> GetAdoptionApplication(int organizationId)
+        {
+            return Ok();
+        }
+
+        /// <summary>
         /// Create new organization object
         /// </summary>
         /// <param name="organization"></param>

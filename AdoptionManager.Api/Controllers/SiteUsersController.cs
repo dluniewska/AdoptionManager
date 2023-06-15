@@ -22,6 +22,18 @@ namespace AdoptionManager.Api.Controllers
         }
 
         /// <summary>
+        /// Get single site user
+        /// </summary>
+        /// <param name="siteUserId"></param>
+        /// <returns>site user object</returns>
+        [HttpGet("{siteUserId}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<object>))]
+        public async Task<IActionResult> GetAdoptionApplication(int siteUserId)
+        {
+            return Ok();
+        }
+
+        /// <summary>
         /// Create new site user object
         /// </summary>
         /// <param name="siteUser"></param>
