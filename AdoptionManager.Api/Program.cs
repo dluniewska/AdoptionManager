@@ -25,7 +25,7 @@ builder.Services.AddSwaggerGen(options =>
     {
         Version = "v1",
         Title = "AdoptionManager",
-        Description = "An ASP.NET Core Web API for managing laboratory animals adoption",
+        Description = "An ASP.NET Core Web API for managing animals adoption",
         Contact = new OpenApiContact
         {
             Name = "Daria",

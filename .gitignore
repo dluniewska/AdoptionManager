@@ -4,6 +4,7 @@
 
 # configuration files
 appsettings.json
+appsettings.Development.json
 appsettings.Production.json
 
 # User-specific files
