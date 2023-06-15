@@ -1,4 +1,4 @@
-﻿namespace AdoptionManager.Domain.Entities
+﻿namespace AdoptionManager.Domain.Entities.Animals
 {
     public class AnimalCategory
     {

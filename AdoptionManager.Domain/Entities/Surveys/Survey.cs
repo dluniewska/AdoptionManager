@@ -1,4 +1,6 @@
-﻿namespace AdoptionManager.Domain.Entities.Surveys
+﻿using AdoptionManager.Domain.Entities.Users;
+
+namespace AdoptionManager.Domain.Entities.Surveys
 {
     public class Survey
     {
