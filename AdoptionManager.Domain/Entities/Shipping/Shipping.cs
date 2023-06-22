@@ -1,4 +1,5 @@
-﻿using AdoptionManager.Domain.Entities.Users;
+﻿using AdoptionManager.Domain.Common;
+using AdoptionManager.Domain.Entities.Users;
 
 namespace AdoptionManager.Domain.Entities.Shipping
 {
@@ -11,9 +12,8 @@ namespace AdoptionManager.Domain.Entities.Shipping
         CANCELLED = 5
     }
 
-    public class Shipping
+    public class Shipping : AuditableEntity
     {
-        public int ShipmentId { get; set; }
         public DateTime ShipmentDate { get; set; }
         public ShipmentStatus ShipmentStatus { get; set; }
         public SiteUserAddress ShipmentAddress { get; set; }

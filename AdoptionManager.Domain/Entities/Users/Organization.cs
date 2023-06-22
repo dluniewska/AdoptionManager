@@ -1,8 +1,9 @@
-﻿namespace AdoptionManager.Domain.Entities.Users
+﻿using AdoptionManager.Domain.Common;
+
+namespace AdoptionManager.Domain.Entities.Users
 {
-    public class Organization
+    public class Organization : AuditableEntity
     {
-        public int OrganizationId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public int Phone { get; set; }

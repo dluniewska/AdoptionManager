@@ -1,8 +1,9 @@
-﻿namespace AdoptionManager.Domain.Entities.Surveys
+﻿using AdoptionManager.Domain.Common;
+
+namespace AdoptionManager.Domain.Entities.Surveys
 {
-    public class Question
+    public class Question : AuditableEntity
     {
-        public int QuestionId { get; set; }
         public string Text { get; set; }
     }
 }

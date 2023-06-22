@@ -1,4 +1,5 @@
-﻿using AdoptionManager.Domain.Entities.Shipping;
+﻿using AdoptionManager.Domain.Common;
+using AdoptionManager.Domain.Entities.Shipping;
 using AdoptionManager.Domain.Entities.Users;
 
 namespace AdoptionManager.Domain.Entities.Product
@@ -12,9 +13,8 @@ namespace AdoptionManager.Domain.Entities.Product
         DECLINED = 5
     }
 
-    public class AdoptionApplication
+    public class AdoptionApplication : AuditableEntity
     {
-        public int AdoptionApplicationId { get; set; }
         public int SiteUserId { get; set; }
         public SiteUser SiteUser { get; set; }
         public int ShippingAddressId { get; set; }

@@ -1,10 +1,10 @@
-﻿using AdoptionManager.Domain.Entities.ValueObjects;
+﻿using AdoptionManager.Domain.Common;
+using AdoptionManager.Domain.Entities.ValueObjects;
 
 namespace AdoptionManager.Domain.Entities.Users
 {
-    public class Address
+    public class Address : AuditableEntity
     {
-        public int AddressId { get; set; }
         public AddressName AddressName { get; set; }
     }
 }

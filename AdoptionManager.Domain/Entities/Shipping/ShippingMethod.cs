@@ -1,8 +1,9 @@
-﻿namespace AdoptionManager.Domain.Entities.Shipping
+﻿using AdoptionManager.Domain.Common;
+
+namespace AdoptionManager.Domain.Entities.Shipping
 {
-    public class ShippingMethod
+    public class ShippingMethod : AuditableEntity
     {
-        public int ShippingMethodId { get; set; }
         public int Name { get; set; }
     }
 }

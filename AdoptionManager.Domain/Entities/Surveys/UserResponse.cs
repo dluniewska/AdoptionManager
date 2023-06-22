@@ -1,10 +1,10 @@
-﻿using AdoptionManager.Domain.Entities.Users;
+﻿using AdoptionManager.Domain.Common;
+using AdoptionManager.Domain.Entities.Users;
 
 namespace AdoptionManager.Domain.Entities.Surveys
 {
-    public class UserResponse
+    public class UserResponse : AuditableEntity
     {
-        public int UserResponseId { get; set; }
         public int SurveyId { get; set; }
         public Survey Survey { get; set; }
         public int SiteUserId { get; set; }

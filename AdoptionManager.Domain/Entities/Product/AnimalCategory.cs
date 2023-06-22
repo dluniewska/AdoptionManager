@@ -1,8 +1,9 @@
-﻿namespace AdoptionManager.Domain.Entities.Animals
+﻿using AdoptionManager.Domain.Common;
+
+namespace AdoptionManager.Domain.Entities.Animals
 {
-    public class AnimalCategory
+    public class AnimalCategory : AuditableEntity
     {
-        public int AnimalCategoryId { get; set; }
         public int ParentCategoryId { get; set; }
         public string CategoryName { get; set; }
     }
