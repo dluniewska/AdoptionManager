@@ -1,6 +1,6 @@
 ﻿using AdoptionManager.Domain.Common;
 
-namespace AdoptionManager.Domain.Entities.ValueObjects
+namespace AdoptionManager.Domain.ValueObjects
 {
     public class AddressName : ValueObject
     {
@@ -19,7 +19,7 @@ namespace AdoptionManager.Domain.Entities.ValueObjects
         public AddressName(string street, string buildingnumber, string apartmentnumber, string zipcode, string city, string country)
         {
             StreetName = street;
-            BuildingNumber = buildingnumber; 
+            BuildingNumber = buildingnumber;
             ApartmentNumber = apartmentnumber;
             ZipCode = zipcode;
             City = city;

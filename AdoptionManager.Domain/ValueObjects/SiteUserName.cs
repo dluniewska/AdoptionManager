@@ -1,6 +1,6 @@
 ﻿using AdoptionManager.Domain.Common;
 
-namespace AdoptionManager.Domain.Entities.ValueObjects
+namespace AdoptionManager.Domain.ValueObjects
 {
     public class SiteUserName : ValueObject
     {

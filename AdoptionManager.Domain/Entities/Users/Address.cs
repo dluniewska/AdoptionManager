@@ -1,5 +1,5 @@
 ﻿using AdoptionManager.Domain.Common;
-using AdoptionManager.Domain.Entities.ValueObjects;
+using AdoptionManager.Domain.ValueObjects;
 
 namespace AdoptionManager.Domain.Entities.Users
 {
