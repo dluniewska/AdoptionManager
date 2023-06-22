@@ -4,8 +4,8 @@ namespace AdoptionManager.Domain.Entities.ValueObjects
 {
     public class SiteUserName : ValueObject
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string FirstName { get; private set; }
+        public string LastName { get; private set; }
 
         public override string ToString()
         {

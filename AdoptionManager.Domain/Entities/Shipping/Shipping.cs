@@ -1,4 +1,6 @@
-﻿namespace AdoptionManager.Domain.Entities.Shipping
+﻿using AdoptionManager.Domain.Entities.Users;
+
+namespace AdoptionManager.Domain.Entities.Shipping
 {
     public enum ShipmentStatus
     {

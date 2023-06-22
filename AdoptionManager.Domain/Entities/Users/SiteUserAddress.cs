@@ -1,10 +1,7 @@
-﻿namespace AdoptionManager.Domain.Entities
+﻿namespace AdoptionManager.Domain.Entities.Users
 {
-    public class SiteUserAddress
+    public class SiteUserAddress : Address
     {
-        public int SiteUserAddressId { get; set; }
-        public int AddressId { get; set; }
-        public Address Address { get; set; }
         public bool IsDefault { get; set; }
     }
 }
