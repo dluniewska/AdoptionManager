@@ -1,7 +1,17 @@
-﻿using AdoptionManager.Domain.Entities.Users;
+﻿using AdoptionManager.Domain.Entities.Shipping;
+using AdoptionManager.Domain.Entities.Users;
 
-namespace AdoptionManager.Domain.Entities
+namespace AdoptionManager.Domain.Entities.Product
 {
+    public enum ApplicationStatus
+    {
+        ACCEPTED = 1,
+        PENDING = 2,
+        PROCESSED = 3,
+        COMPLETED = 4,
+        DECLINED = 5
+    }
+
     public class AdoptionApplication
     {
         public int AdoptionApplicationId { get; set; }

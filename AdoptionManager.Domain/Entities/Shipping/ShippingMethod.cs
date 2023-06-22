@@ -1,9 +1,8 @@
-﻿namespace AdoptionManager.Domain.Entities
+﻿namespace AdoptionManager.Domain.Entities.Shipping
 {
     public class ShippingMethod
     {
         public int ShippingMethodId { get; set; }
         public int Name { get; set; }
-        public DateTime ShipmentDate { get; set; }
     }
 }
