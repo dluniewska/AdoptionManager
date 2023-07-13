@@ -8,6 +8,11 @@ namespace AdoptionManager.Domain.ValueObjects
         public string UserName { get; set; }
         public string DomainName { get; set; }
 
+        public override string ToString()
+        {
+            return $"{UserName}@{DomainName}";
+        }
+
         public static Email For(string email)
         {
             var emailObj = new Email();
@@ -29,7 +34,8 @@ namespace AdoptionManager.Domain.ValueObjects
 
         protected override IEnumerable<object> GetEqualityComponents()
         {
-            throw new NotImplementedException();
+            yield return UserName;
+            yield return DomainName;
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace AdoptionManager.Domain.ValueObjects
 {
-    public class AddressName : ValueObject
+    public class AddressObj : ValueObject
     {
         public string StreetName { get; private set; }
         public string BuildingNumber { get; private set; }
@@ -16,7 +16,7 @@ namespace AdoptionManager.Domain.ValueObjects
             return $"{StreetName} {BuildingNumber}/{ApartmentNumber}, {ZipCode} {City}, {Country}";
         }
 
-        public AddressName(string street, string buildingnumber, string apartmentnumber, string zipcode, string city, string country)
+        public AddressObj(string street, string buildingnumber, string apartmentnumber, string zipcode, string city, string country)
         {
             StreetName = street;
             BuildingNumber = buildingnumber;
