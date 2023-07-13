@@ -5,7 +5,7 @@ namespace AdoptionManager.Domain.Entities.Users
 {
     public class Address : AuditableEntity
     {
-        public AddressObj AddressName { get; set; }
+        public AddressObj AddressObj { get; set; }
         public bool IsDefault { get; set; }
 
     }

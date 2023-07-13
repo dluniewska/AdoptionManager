@@ -16,8 +16,10 @@ namespace AdoptionManager.Domain.Entities.Shipping
     {
         public DateTime ShipmentDate { get; set; }
         public ShipmentStatus ShipmentStatus { get; set; }
+
         public int ShipmentAddressId { get; set; }
         public Address ShipmentAddress { get; set; }
+
         public int ShipmentMethodId { get; set; }
         public ShippingMethod ShipmentMethod { get; set; }
     }

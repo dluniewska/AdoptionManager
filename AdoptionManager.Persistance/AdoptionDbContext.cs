@@ -1,4 +1,9 @@
 ﻿using AdoptionManager.Domain.Common;
+using AdoptionManager.Domain.Entities.Animals;
+using AdoptionManager.Domain.Entities.Product;
+using AdoptionManager.Domain.Entities.Shipping;
+using AdoptionManager.Domain.Entities.Surveys;
+using AdoptionManager.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 
 namespace AdoptionManager.Persistance
@@ -7,10 +12,103 @@ namespace AdoptionManager.Persistance
     {
         public AdoptionDbContext(DbContextOptions<AdoptionDbContext> options) : base(options) { }
 
+        //Product (Adoption Offer)
+        public DbSet<Animal> Animals { get; set; }
+        public DbSet<AdoptionOffer> AdoptionOffers { get; set; }
+        public DbSet<AdoptionApplication> ApplicationApplications { get; set; }
+        public DbSet<AnimalCategory> AnimalCategories { get; set; }
+
+        //Users
+        public DbSet<Organization> Organizations { get; set; }
+        public DbSet<SiteUser> SiteUsers { get; set; }
+        public DbSet<Address> Address { get; set; }
+
+        //Shipping
+        public DbSet<Shipping> Shippings { get; set; }
+        public DbSet<ShippingMethod> ShippingMethods { get; set; }
+
+        //Survey
+        public DbSet<Survey> Surveys { get; set; }
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<Answer> Answers { get; set; }
+        public DbSet<UserResponse> UserResponses { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Animal>(animal =>
+            {
+                animal.Property(a => a.Id).UseIdentityColumn();
+            });
+
+            modelBuilder.Entity<AdoptionOffer>(adoptionOffer =>
+            {
+                adoptionOffer.Property(ao => ao.Id).UseIdentityColumn();
+            });
+
+            modelBuilder.Entity<AdoptionApplication>(adoptionApplication =>
+            {
+                adoptionApplication.Property(ac => ac.Id).UseIdentityColumn();
+            });
+
+            modelBuilder.Entity<AnimalCategory>(animalCategory =>
+            {
+                animalCategory.Property(ac => ac.Id).UseIdentityColumn();
+            });
+
+
+
+            modelBuilder.Entity<Organization>(organization =>
+            {
+                organization.Property(o => o.Id).UseIdentityColumn();
+                organization.OwnsOne(o => o.Email);
+            });
+
+            modelBuilder.Entity<SiteUser>(siteUser =>
+            {
+                siteUser.Property(su => su.Id).UseIdentityColumn();
+                siteUser.OwnsOne(su => su.SiteUserName);
+                siteUser.OwnsOne(su => su.Email);
+            });
+
+            modelBuilder.Entity<Address>(address =>
+            {
+                address.OwnsOne(a => a.AddressObj);
+            });
+
+
+
+            modelBuilder.Entity<Shipping>(shipping =>
+            {
+                shipping.Property(s => s.Id).UseIdentityColumn();
+            });
+
+            modelBuilder.Entity<ShippingMethod>(shippingMethod =>
+            {
+                shippingMethod.Property(sm => sm.Id).UseIdentityColumn();
+            });
+
+
+
+            modelBuilder.Entity<Survey>(survey =>
+            {
+                survey.Property(s => s.Id).UseIdentityColumn();
+            });
+
+            modelBuilder.Entity<Question>(question =>
+            {
+                question.Property(q => q.Id).UseIdentityColumn();
+            });
+
+            modelBuilder.Entity<Answer>(answer =>
+            {
+                answer.Property(a => a.Id).UseIdentityColumn();
+            });
+            modelBuilder.Entity<UserResponse>(userResponse =>
+            {
+                userResponse.Property(us => us.Id).UseIdentityColumn();
+            });
         }
+
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {

@@ -16,12 +16,12 @@ namespace AdoptionManager.Domain.ValueObjects
             return $"{StreetName} {BuildingNumber}/{ApartmentNumber}, {ZipCode} {City}, {Country}";
         }
 
-        public AddressObj(string street, string buildingnumber, string apartmentnumber, string zipcode, string city, string country)
+        public AddressObj (string streetName, string buildingNumber, string apartmentNumber, string zipCode, string city, string country)
         {
-            StreetName = street;
-            BuildingNumber = buildingnumber;
-            ApartmentNumber = apartmentnumber;
-            ZipCode = zipcode;
+            StreetName = streetName;
+            BuildingNumber = buildingNumber;
+            ApartmentNumber = apartmentNumber;
+            ZipCode = zipCode;
             City = city;
             Country = country;
         }
