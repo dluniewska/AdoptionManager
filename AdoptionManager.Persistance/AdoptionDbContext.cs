@@ -107,6 +107,9 @@ namespace AdoptionManager.Persistance
             {
                 userResponse.Property(us => us.Id).UseIdentityColumn();
             });
+
+
+            modelBuilder.SeedData();
         }
 
 

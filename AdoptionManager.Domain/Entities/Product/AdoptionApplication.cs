@@ -21,7 +21,6 @@ namespace AdoptionManager.Domain.Entities.Product
         public int ShippingAddressId { get; set; }
         public Address ShippingAddress { get; set; }
 
-        public int ApplicationStatusId { get; set; }
         public ApplicationStatus ApplicationStatus { get; set; }
 
         public int OrganizationId { get; set; }
