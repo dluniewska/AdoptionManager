@@ -1,5 +1,6 @@
 global using System;
 using Microsoft.OpenApi.Models;
+using AdoptionManager.Persistance;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,8 @@ var corsPolicyName = "ClientCors";
 var allowedOrigins = builder.Configuration.GetSection("AllowedOrigins").Get<List<string>>();
 
 // Add services to the container.
+
+builder.Services.AddPersistance(builder.Configuration);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

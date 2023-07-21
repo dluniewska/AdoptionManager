@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoptionManager.Application", "AdoptionManager.Application\AdoptionManager.Application.csproj", "{231192B5-29AB-4A31-A7E8-82A75AAFB9CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdoptionManager.Application", "AdoptionManager.Application\AdoptionManager.Application.csproj", "{231192B5-29AB-4A31-A7E8-82A75AAFB9CE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{EA7E5680-DF05-4456-97C4-98845BC8A4B6}"
 EndProject
@@ -11,15 +11,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{8D105990-371E-417E-BC29-66291EE0D1CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoptionManager.Common", "AdoptionManager.Common\AdoptionManager.Common.csproj", "{325C1719-99AF-4517-A2CB-A36B7EEA41CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdoptionManager.Common", "AdoptionManager.Common\AdoptionManager.Common.csproj", "{325C1719-99AF-4517-A2CB-A36B7EEA41CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoptionManager.Domain", "AdoptionManager.Domain\AdoptionManager.Domain.csproj", "{16D011C7-F7BA-4929-B8EC-C7503316DB71}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdoptionManager.Domain", "AdoptionManager.Domain\AdoptionManager.Domain.csproj", "{16D011C7-F7BA-4929-B8EC-C7503316DB71}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoptionManager.Infrastructure", "AdoptionManager.Infrastructure\AdoptionManager.Infrastructure.csproj", "{E7380EA6-1DAC-4754-9767-106DBAFBA8D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdoptionManager.Infrastructure", "AdoptionManager.Infrastructure\AdoptionManager.Infrastructure.csproj", "{E7380EA6-1DAC-4754-9767-106DBAFBA8D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoptionManager.Persistance", "AdoptionManager.Persistance\AdoptionManager.Persistance.csproj", "{ED4FE039-B296-403A-93CC-2219FCBC7AC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdoptionManager.Persistance", "AdoptionManager.Persistance\AdoptionManager.Persistance.csproj", "{ED4FE039-B296-403A-93CC-2219FCBC7AC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoptionManager.Api", "AdoptionManager.Api\AdoptionManager.Api.csproj", "{F255E8E9-93A2-40C1-90A8-82B5BC355FB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdoptionManager.Api", "AdoptionManager.Api\AdoptionManager.Api.csproj", "{F255E8E9-93A2-40C1-90A8-82B5BC355FB3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
