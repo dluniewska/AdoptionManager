@@ -11,8 +11,7 @@ namespace AdoptionManager.Domain.Entities.Shipping
 
     public class ShippingMethod : AuditableEntity
     {
-        public int Name { get; set; }
         public ShippingType ShippingType { get; set; }
-        public string Description { get; set; }
+        public string? Description { get; set; }
     }
 }

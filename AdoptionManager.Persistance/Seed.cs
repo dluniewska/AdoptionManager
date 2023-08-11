@@ -3,6 +3,7 @@ using AdoptionManager.Domain.Entities.Product;
 using AdoptionManager.Domain.Entities.Shipping;
 using AdoptionManager.Domain.Entities.Surveys;
 using AdoptionManager.Domain.Entities.Users;
+using AdoptionManager.Domain.Entities.Users.Addressess;
 using Microsoft.EntityFrameworkCore;
 
 namespace AdoptionManager.Persistance
@@ -19,8 +20,8 @@ namespace AdoptionManager.Persistance
                     {
                         Id = 1,
                         Name = "Szczur Wistar",
-                        Age = 2,
-                        AgeUnit = AgeUnit.YEAR,
+                        Age = 10,
+                        AgeUnit = AgeUnit.MONTH,
                         Species = "Szczur"
                     },
                     new Animal()
@@ -43,7 +44,8 @@ namespace AdoptionManager.Persistance
                         AnimalId = 1,
                         ResidenceAddressId = 1,
                         QuatntityInStock = 30,
-                        SurveyId = 1
+                        SurveyId = 1, 
+                        Description = "Zwierzęta z nadwyżki hodowlanej, lub po nieinwazyjnych testach"
                     },
                     new AdoptionOffer()
                     {
@@ -51,7 +53,8 @@ namespace AdoptionManager.Persistance
                         AnimalId= 2,
                         ResidenceAddressId = 2,
                         QuatntityInStock = 2,
-                        SurveyId = 2
+                        SurveyId = 2,
+                        Description = "Kociaki znalezione na ulicy"
                     }
                 );
             });
@@ -63,7 +66,6 @@ namespace AdoptionManager.Persistance
                     {
                         Id = 1,
                         SiteUserId = 1,
-                        ShippingAddressId = 3,
                         ApplicationStatus = ApplicationStatus.PENDING,
                         OrganizationId = 1,
                         ShippingMethodId = 1,
@@ -73,7 +75,6 @@ namespace AdoptionManager.Persistance
                     {
                         Id = 2,
                         SiteUserId = 2,
-                        ShippingAddressId = 4,
                         ApplicationStatus = ApplicationStatus.PROCESSED,
                         OrganizationId = 2,
                         ShippingMethodId = 2,
@@ -170,40 +171,96 @@ namespace AdoptionManager.Persistance
 
             modelBuilder.Entity<SiteUser>(siteUser =>
             {
-                siteUser.
+                siteUser.HasData(
+                    new SiteUser()
+                    {
+                        Id = 1,
+                        Phone = 111111111,
+                    },
+                    new SiteUser()
+                    {
+                        Id = 2,
+                        Phone = 222222222
+                    },
+                    new SiteUser()
+                    {
+                        Id = 3,
+                        Phone = 333333333
+                    }
+                );
+                siteUser.OwnsOne(o => o.Email).HasData(
+                    new
+                    {
+                        SiteUserId = 1,
+                        UserName = "sam.w",
+                        Domain = "test"
+                    },
+                    new
+                    {
+                        SiteUserId = 2,
+                        UserName = "dean.w",
+                        Domain = "test"
+                    },
+                    new
+                    {
+                        SiteUserId = 3,
+                        UserName = "jack.k",
+                        Domain = "test"
+                    }
+                );
+                siteUser.OwnsOne(o => o.SiteUserName).HasData(
+                    new
+                    {
+                        SiteUserId = 1,
+                        FirstName = "Sam",
+                        LastName = "Winchester"
+                    },
+                    new
+                    {
+                        SiteUserId = 2,
+                        FirstName = "Dean",
+                        LastName = "Winchester"
+                    },
+                    new
+                    {
+                        SiteUserId = 3,
+                        FirstName = "Jack",
+                        LastName = "Kline"
+                    }
+                );
             });
 
             modelBuilder.Entity<Address>(address =>
             {
                 address.HasData(
-                    new Address() //Adoption Offer 1 Residency address
+                    new OrganizationAddress() //Adoption Offer 1 Residency address
                     {
                         Id = 1,
                         IsDefault = false,
                     },
-                    new Address() // Adoption Offer 2 Residency address
+                    new OrganizationAddress() // Adoption Offer 2 Residency address
                     {
                         Id = 2,
                         IsDefault = false,
                     },
-                    new Address() // Shipping 1 address
+                    new SiteUserAddress() // Shipping 1 address
                     {
                         Id = 3,
                         IsDefault = false,
                     },
-                    new Address() // Shipping 2 address
+                    new SiteUserAddress() // Shipping 2 address
                     {
                         Id = 4,
                         IsDefault = false,
                     },
-                    new Address() // Organization 1 address
+                    new OrganizationAddress() // Organization 1 address
                     {
-                        Id = 4,
+                        Id = 5,
                         IsDefault = true,
                     },
-                    new Address() // Organization 2 address
+                    new OrganizationAddress() // Organization 2 address
                     {
-                        Id = 4,
+                        Id = 6,
                         IsDefault = true,
                     }
                 );
@@ -213,33 +270,124 @@ namespace AdoptionManager.Persistance
             //Shipping
             modelBuilder.Entity<Shipping>(shipping =>
             {
-                shipping.
+                shipping.HasData(
+                    new Shipping()
+                    {
+                        Id = 1,
+                        ShipmentAddressId = 3, //Shipping 1 Address
+                        ShipmentDate = DateTime.UtcNow.AddDays(10),
+                        ShipmentMethodId = 1,
+                        ShipmentStatus = ShipmentStatus.PENDING,
+                    },
+                    new Shipping()
+                    {
+                        Id = 2, 
+                        ShipmentAddressId = 4, //Shipping 2 Address
+                        ShipmentDate = DateTime.UtcNow.AddDays(15),
+                        ShipmentMethodId = 2,
+                        ShipmentStatus = ShipmentStatus.PROCESSED
+                    }
+                );
             });
 
             modelBuilder.Entity<ShippingMethod>(shippingMethod =>
             {
-                shippingMethod.
+                shippingMethod.HasData(
+                    new ShippingMethod()
+                    {
+                        Id= 1,
+                        Description = "",
+                        ShippingType = ShippingType.CLIENT
+                    },
+                    new ShippingMethod()
+                    {
+                        Id = 2,
+                        Description = "",
+                        ShippingType = ShippingType.VOLUNTEER
+                    }
+                );
             });
 
 
             //Survey
             modelBuilder.Entity<Survey>(survey =>
             {
-                survey.
+                survey.HasData(
+                    new Survey()
+                    {
+                        Id = 1,
+                        Description = "Ankieta adopcji szczurów laboratoryjnych",
+                        Title = "Szczury laboratoryjne",
+                    },
+                    new Survey()
+                    {
+                        Id = 2,
+                        Description = "Ankieta adopcji kotów",
+                        Title = "Koty",
+                    }
+                );
             });
 
             modelBuilder.Entity<Question>(question =>
             {
-                question.
+                question.HasData(
+                    new Question()
+                    {
+                        Id = 1,
+                        Text = "Czy posiadasz już jakies zwierzęta?"
+                    },
+                    new Question()
+                    {
+                        Id = 2,
+                        Text = "Gdzie zwierzę będzie przebywało w czasie urlopu/wakacji?"
+                    },
+                    new Question()
+                    {
+                        Id = 3,
+                        Text = "Jakie wymiary będzie miała klatka?"
+                    }
+                );
             });
 
             modelBuilder.Entity<Answer>(answer =>
             {
-                answer.
+                answer.HasData(
+                    new Answer() 
+                    {
+                        Id = 1,
+                        QuestionId = 1,
+                        Text = "Tak, kota"
+                    },
+                    new Answer()
+                    {
+                        Id = 2,
+                        QuestionId = 2,
+                        Text = "U rodziców"
+                    },
+                    new Answer()
+                    {
+                        Id = 3,
+                        QuestionId = 3,
+                        Text = "Tak, kota"
+                    }
+                );
             });
             modelBuilder.Entity<UserResponse>(userResponse =>
             {
-                userResponse.
+                userResponse.HasData(
+                    new UserResponse() 
+                    {
+                        Id = 1,
+                        SurveyId = 1,
+                        SiteUserId = 1,
+                    },
+                    new UserResponse()
+                    {
+                        Id = 2,
+                        SurveyId = 2,
+                        SiteUserId = 2,
+                    }
+                );
             });
         }
     }

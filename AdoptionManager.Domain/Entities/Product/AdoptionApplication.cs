@@ -1,6 +1,7 @@
 ﻿using AdoptionManager.Domain.Common;
 using AdoptionManager.Domain.Entities.Shipping;
 using AdoptionManager.Domain.Entities.Users;
+using AdoptionManager.Domain.Entities.Users.Addressess;
 
 namespace AdoptionManager.Domain.Entities.Product
 {
@@ -17,9 +18,6 @@ namespace AdoptionManager.Domain.Entities.Product
     {
         public int SiteUserId { get; set; }
         public SiteUser SiteUser { get; set; }
-
-        public int ShippingAddressId { get; set; }
-        public Address ShippingAddress { get; set; }
 
         public ApplicationStatus ApplicationStatus { get; set; }
 

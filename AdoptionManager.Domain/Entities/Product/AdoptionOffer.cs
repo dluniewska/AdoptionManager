@@ -1,6 +1,6 @@
 ﻿using AdoptionManager.Domain.Common;
 using AdoptionManager.Domain.Entities.Surveys;
-using AdoptionManager.Domain.Entities.Users;
+using AdoptionManager.Domain.Entities.Users.Addressess;
 
 namespace AdoptionManager.Domain.Entities.Animals
 {
@@ -16,6 +16,8 @@ namespace AdoptionManager.Domain.Entities.Animals
 
         public int SurveyId { get; set; }
         public Survey Survey { get; set; }
+
+        public string Description { get; set; }
 
         public ICollection<AnimalCategory> AnimalCategories { get; set; } = new List<AnimalCategory>();
     }

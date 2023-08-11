@@ -4,6 +4,7 @@ using AdoptionManager.Domain.Entities.Product;
 using AdoptionManager.Domain.Entities.Shipping;
 using AdoptionManager.Domain.Entities.Surveys;
 using AdoptionManager.Domain.Entities.Users;
+using AdoptionManager.Domain.Entities.Users.Addressess;
 using Microsoft.EntityFrameworkCore;
 
 namespace AdoptionManager.Persistance
