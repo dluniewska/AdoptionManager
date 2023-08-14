@@ -1,7 +1,7 @@
 ﻿using AdoptionManager.Domain.Common;
 using AdoptionManager.Domain.Entities.Product;
 using AdoptionManager.Domain.Entities.Surveys;
-using AdoptionManager.Domain.Entities.Users.Addressess;
+using AdoptionManager.Domain.Entities.Users.Addresses;
 using AdoptionManager.Domain.ValueObjects;
 
 namespace AdoptionManager.Domain.Entities.Users

@@ -1,7 +1,6 @@
 ﻿using AdoptionManager.Domain.Common;
 using AdoptionManager.Domain.Entities.Shipping;
 using AdoptionManager.Domain.Entities.Users;
-using AdoptionManager.Domain.Entities.Users.Addressess;
 
 namespace AdoptionManager.Domain.Entities.Product
 {

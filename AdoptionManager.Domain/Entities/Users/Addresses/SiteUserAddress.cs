@@ -1,4 +1,4 @@
-﻿namespace AdoptionManager.Domain.Entities.Users.Addressess
+﻿namespace AdoptionManager.Domain.Entities.Users.Addresses
 {
     public class SiteUserAddress : Address
     {

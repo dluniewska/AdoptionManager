@@ -7,6 +7,6 @@ namespace AdoptionManager.Domain.Entities.Animals
         public int? ParentCategoryId { get; set; }
         public AnimalCategory ParentCategory { get; set; }
         public string CategoryName { get; set; }
-        public ICollection<AdoptionOffer> AdoptionOffers { get; set; } = new List<AdoptionOffer>();
+        public List<AdoptionOffer> AdoptionOffers { get; set; } = new List<AdoptionOffer>();
     }
 }

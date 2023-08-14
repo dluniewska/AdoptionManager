@@ -4,7 +4,7 @@ using AdoptionManager.Domain.Entities.Product;
 using AdoptionManager.Domain.Entities.Shipping;
 using AdoptionManager.Domain.Entities.Surveys;
 using AdoptionManager.Domain.Entities.Users;
-using AdoptionManager.Domain.Entities.Users.Addressess;
+using AdoptionManager.Domain.Entities.Users.Addresses;
 using Microsoft.EntityFrameworkCore;
 
 namespace AdoptionManager.Persistance
@@ -22,7 +22,9 @@ namespace AdoptionManager.Persistance
         //Users
         public DbSet<Organization> Organizations { get; set; }
         public DbSet<SiteUser> SiteUsers { get; set; }
-        public DbSet<Address> Address { get; set; }
+        public DbSet<Address> Addresses { get; set; }
+        public DbSet<SiteUserAddress> SiteUserAddresses { get; set; }
+        public DbSet<OrganizationAddress> OrganizationAddresses { get; set; }
 
         //Shipping
         public DbSet<Shipping> Shippings { get; set; }
@@ -71,7 +73,12 @@ namespace AdoptionManager.Persistance
                 siteUser.OwnsOne(su => su.Email);
             });
 
-            modelBuilder.Entity<Address>(address =>
+            modelBuilder.Entity<OrganizationAddress>(address =>
+            {
+                address.OwnsOne(a => a.AddressObj);
+            });
+
+            modelBuilder.Entity<SiteUserAddress>(address =>
             {
                 address.OwnsOne(a => a.AddressObj);
             });
@@ -123,7 +130,7 @@ namespace AdoptionManager.Persistance
                     case EntityState.Added:
                         entry.Entity.Created = DateTime.Now;
                         entry.Entity.CreatedBy = string.Empty;
-                        entry.Entity.StatusId = 1;
+                        entry.Entity.StatusId = 1; //active
                         break;
                     case EntityState.Modified:
                         entry.Entity.Modified = DateTime.Now;
@@ -134,7 +141,7 @@ namespace AdoptionManager.Persistance
                         entry.Entity.ModifiedBy = string.Empty;
                         entry.Entity.Inactivated = DateTime.Now;
                         entry.Entity.InactivatedBy = string.Empty;
-                        entry.Entity.StatusId = 0;
+                        entry.Entity.StatusId = 0; //inactive
                         entry.State = EntityState.Modified;
                         break;
                 }
@@ -151,7 +158,7 @@ namespace AdoptionManager.Persistance
                     case EntityState.Added:
                         entry.Entity.Created = DateTime.Now;
                         entry.Entity.CreatedBy = string.Empty;
-                        entry.Entity.StatusId = 1;
+                        entry.Entity.StatusId = 1; //active
                         break;
                     case EntityState.Modified:
                         entry.Entity.Modified = DateTime.Now;
@@ -162,12 +169,70 @@ namespace AdoptionManager.Persistance
                         entry.Entity.ModifiedBy = string.Empty;
                         entry.Entity.Inactivated = DateTime.Now;
                         entry.Entity.InactivatedBy = string.Empty;
-                        entry.Entity.StatusId = 0;
+                        entry.Entity.StatusId = 0; //inactive
                         entry.State = EntityState.Modified;
                         break;
                 }
             }
             return base.SaveChanges();
+        }
+
+        public override int SaveChanges(bool acceptAllChangesOnSuccess)
+        {
+            foreach (var entry in ChangeTracker.Entries<AuditableEntity>())
+            {
+                switch (entry.State)
+                {
+                    case EntityState.Added:
+                        entry.Entity.Created = DateTime.Now;
+                        entry.Entity.CreatedBy = string.Empty;
+                        entry.Entity.StatusId = 1; //active
+                        break;
+                    case EntityState.Modified:
+                        entry.Entity.Modified = DateTime.Now;
+                        entry.Entity.ModifiedBy = string.Empty;
+                        break;
+                    case EntityState.Deleted:
+                        entry.Entity.Modified = DateTime.Now;
+                        entry.Entity.ModifiedBy = string.Empty;
+                        entry.Entity.Inactivated = DateTime.Now;
+                        entry.Entity.InactivatedBy = string.Empty;
+                        entry.Entity.StatusId = 0; //inactive
+                        entry.State = EntityState.Modified;
+                        break;
+                }
+            }
+
+            return base.SaveChanges(acceptAllChangesOnSuccess);
+        }
+
+        public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
+        {
+            foreach (var entry in ChangeTracker.Entries<AuditableEntity>())
+            {
+                switch (entry.State)
+                {
+                    case EntityState.Added:
+                        entry.Entity.Created = DateTime.Now;
+                        entry.Entity.CreatedBy = string.Empty;
+                        entry.Entity.StatusId = 1; //active
+                        break;
+                    case EntityState.Modified:
+                        entry.Entity.Modified = DateTime.Now;
+                        entry.Entity.ModifiedBy = string.Empty;
+                        break;
+                    case EntityState.Deleted:
+                        entry.Entity.Modified = DateTime.Now;
+                        entry.Entity.ModifiedBy = string.Empty;
+                        entry.Entity.Inactivated = DateTime.Now;
+                        entry.Entity.InactivatedBy = string.Empty;
+                        entry.Entity.StatusId = 0; //inactive
+                        entry.State = EntityState.Modified;
+                        break;
+                }
+            }
+
+            return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
         }
     }
 }

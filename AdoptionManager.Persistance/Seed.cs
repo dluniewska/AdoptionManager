@@ -3,7 +3,7 @@ using AdoptionManager.Domain.Entities.Product;
 using AdoptionManager.Domain.Entities.Shipping;
 using AdoptionManager.Domain.Entities.Surveys;
 using AdoptionManager.Domain.Entities.Users;
-using AdoptionManager.Domain.Entities.Users.Addressess;
+using AdoptionManager.Domain.Entities.Users.Addresses;
 using Microsoft.EntityFrameworkCore;
 
 namespace AdoptionManager.Persistance
@@ -20,17 +20,15 @@ namespace AdoptionManager.Persistance
                     {
                         Id = 1,
                         Name = "Szczur Wistar",
-                        Age = 10,
-                        AgeUnit = AgeUnit.MONTH,
-                        Species = "Szczur"
+                        Species = "Szczur",
+                        BirthDate = DateTime.Now.AddMonths(-10)
                     },
                     new Animal()
                     {
                         Id= 2,
                         Name = "Ragdoll",
-                        Age = 3,
-                        AgeUnit = AgeUnit.YEAR,
-                        Species = "Kot"
+                        Species = "Kot",
+                        BirthDate = DateTime.Now.AddYears(-3)
                     }
                 );
             });
@@ -45,6 +43,7 @@ namespace AdoptionManager.Persistance
                         ResidenceAddressId = 1,
                         QuatntityInStock = 30,
                         SurveyId = 1, 
+                        OrganizationId = 1,
                         Description = "Zwierzęta z nadwyżki hodowlanej, lub po nieinwazyjnych testach"
                     },
                     new AdoptionOffer()
@@ -54,6 +53,7 @@ namespace AdoptionManager.Persistance
                         ResidenceAddressId = 2,
                         QuatntityInStock = 2,
                         SurveyId = 2,
+                        OrganizationId = 2,
                         Description = "Kociaki znalezione na ulicy"
                     }
                 );
@@ -63,7 +63,7 @@ namespace AdoptionManager.Persistance
             {
                 adoptionApplication.HasData(
                     new AdoptionApplication() 
-                    {
+                    {   
                         Id = 1,
                         SiteUserId = 1,
                         ApplicationStatus = ApplicationStatus.PENDING,
@@ -230,7 +230,7 @@ namespace AdoptionManager.Persistance
                 );
             });
 
-            modelBuilder.Entity<Address>(address =>
+            modelBuilder.Entity<OrganizationAddress>(address =>
             {
                 address.HasData(
                     new OrganizationAddress() //Adoption Offer 1 Residency address
@@ -241,16 +241,6 @@ namespace AdoptionManager.Persistance
                     new OrganizationAddress() // Adoption Offer 2 Residency address
                     {
                         Id = 2,
-                        IsDefault = false,
-                    },
-                    new SiteUserAddress() // Shipping 1 address
-                    {
-                        Id = 3,
-                        IsDefault = false,
-                    },
-                    new SiteUserAddress() // Shipping 2 address
-                    {
-                        Id = 4,
                         IsDefault = false,
                     },
                     new OrganizationAddress() // Organization 1 address
@@ -266,6 +256,22 @@ namespace AdoptionManager.Persistance
                 );
             });
 
+            modelBuilder.Entity<SiteUserAddress>(address =>
+            {
+                address.HasData(
+                    new SiteUserAddress() // Shipping 1 address
+                    {
+                        Id = 3,
+                        IsDefault = false,
+                    },
+                    new SiteUserAddress() // Shipping 2 address
+                    {
+                        Id = 4,
+                        IsDefault = false,
+                    }
+                );
+            });
+
 
             //Shipping
             modelBuilder.Entity<Shipping>(shipping =>
@@ -275,7 +281,7 @@ namespace AdoptionManager.Persistance
                     {
                         Id = 1,
                         ShipmentAddressId = 3, //Shipping 1 Address
-                        ShipmentDate = DateTime.UtcNow.AddDays(10),
+                        ShipmentDate = DateTime.Now.AddDays(10),
                         ShipmentMethodId = 1,
                         ShipmentStatus = ShipmentStatus.PENDING,
                     },
@@ -283,7 +289,7 @@ namespace AdoptionManager.Persistance
                     {
                         Id = 2, 
                         ShipmentAddressId = 4, //Shipping 2 Address
-                        ShipmentDate = DateTime.UtcNow.AddDays(15),
+                        ShipmentDate = DateTime.Now.AddDays(15),
                         ShipmentMethodId = 2,
                         ShipmentStatus = ShipmentStatus.PROCESSED
                     }

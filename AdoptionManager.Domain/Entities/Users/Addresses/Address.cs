@@ -1,7 +1,7 @@
 ﻿using AdoptionManager.Domain.Common;
 using AdoptionManager.Domain.ValueObjects;
 
-namespace AdoptionManager.Domain.Entities.Users.Addressess
+namespace AdoptionManager.Domain.Entities.Users.Addresses
 {
     /// <summary>
     /// Base class to inherit by the Address classes for creating table 
