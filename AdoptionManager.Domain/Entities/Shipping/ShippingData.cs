@@ -1,5 +1,5 @@
 ﻿using AdoptionManager.Domain.Common;
-using AdoptionManager.Domain.Entities.Users;
+using AdoptionManager.Domain.Entities.Users.Addresses;
 
 namespace AdoptionManager.Domain.Entities.Shipping
 {
@@ -12,13 +12,13 @@ namespace AdoptionManager.Domain.Entities.Shipping
         CANCELLED = 5
     }
 
-    public class Shipping : AuditableEntity
+    public class ShippingData : AuditableEntity
     {
         public DateTime ShipmentDate { get; set; }
         public ShipmentStatus ShipmentStatus { get; set; }
 
         public int ShipmentAddressId { get; set; }
-        public Address ShipmentAddress { get; set; }
+        public SiteUserAddress ShipmentAddress { get; set; }
 
         public int ShipmentMethodId { get; set; }
         public ShippingMethod ShipmentMethod { get; set; }
