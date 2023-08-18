@@ -208,7 +208,7 @@ namespace AdoptionManager.Persistance
                     new SiteUser()
                     {
                         Id = 2,
-                        Phone = 000000000,
+                        Phone = "000000000",
                         Role = RoleType.ADMIN,
                         CreatedBy = "seeder",
                         Created = DateTime.UtcNow
@@ -216,7 +216,7 @@ namespace AdoptionManager.Persistance
                     new SiteUser()
                     {
                         Id = 3,
-                        Phone = 111111111,
+                        Phone = "111111111",
                         Role = RoleType.USER,
                         CreatedBy = "sam.w@test.com",
                         Created = DateTime.UtcNow
@@ -224,7 +224,7 @@ namespace AdoptionManager.Persistance
                     new SiteUser()
                     {
                         Id = 4,
-                        Phone = 222222222,
+                        Phone = "222222222",
                         Role = RoleType.USER,
                         CreatedBy = "dean.w@test.com",
                         Created= DateTime.UtcNow
@@ -232,9 +232,10 @@ namespace AdoptionManager.Persistance
                     new SiteUser()
                     {
                         Id = 5,
-                        Phone = 333333333,
+                        Phone = "333333333",
                         Role = RoleType.USER,
-                        CreatedBy = "jack.k@test.com"
+                        CreatedBy = "jack.k@test.com",
+                        Created = DateTime.UtcNow
                     }
                 );
                 siteUser.OwnsOne(o => o.Email).HasData(
@@ -565,7 +566,7 @@ namespace AdoptionManager.Persistance
                         Id = 3,
                         QuestionId = 3,
                         UserResponseId = 1,
-                        Text = "Tak, kota",
+                        Text = "Klatka Frodo: długość: 78cm, szerokość: 48cm, wysokość: 80cm. odległość między prętami: 1,3cm",
                         CreatedBy = "sam.w@test.com",
                         Created = DateTime.UtcNow
                     }

@@ -88,7 +88,7 @@ namespace AdoptionManager.Persistance.Migrations
                         {
                             Id = 1,
                             AnimalId = 1,
-                            Created = new DateTime(2023, 8, 18, 15, 19, 15, 6, DateTimeKind.Utc).AddTicks(9439),
+                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(5257),
                             CreatedBy = "lab.rescue.adopcje@gmail.com",
                             Description = "Zwierzęta z nadwyżki hodowlanej, lub po nieinwazyjnych testach",
                             OrganizationId = 1,
@@ -101,7 +101,7 @@ namespace AdoptionManager.Persistance.Migrations
                         {
                             Id = 2,
                             AnimalId = 2,
-                            Created = new DateTime(2023, 8, 18, 15, 19, 15, 6, DateTimeKind.Utc).AddTicks(9441),
+                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(5260),
                             CreatedBy = "kalipso@seed.com",
                             Description = "Koty znalezione na ulicy",
                             OrganizationId = 2,
@@ -162,7 +162,7 @@ namespace AdoptionManager.Persistance.Migrations
                         {
                             Id = 1,
                             BirthDate = new DateOnly(2022, 10, 18),
-                            Created = new DateTime(2023, 8, 18, 15, 19, 15, 6, DateTimeKind.Utc).AddTicks(9316),
+                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(4621),
                             CreatedBy = "lab.rescue.adopcje@gmail.com",
                             Name = "Szczur Wistar",
                             Species = "Szczur",
@@ -172,7 +172,7 @@ namespace AdoptionManager.Persistance.Migrations
                         {
                             Id = 2,
                             BirthDate = new DateOnly(2020, 8, 18),
-                            Created = new DateTime(2023, 8, 18, 15, 19, 15, 6, DateTimeKind.Utc).AddTicks(9322),
+                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(4628),
                             CreatedBy = "kalipso@seed.com",
                             Name = "Ragdoll",
                             Species = "Kot",
@@ -228,7 +228,7 @@ namespace AdoptionManager.Persistance.Migrations
                         {
                             Id = 1,
                             CategoryName = "Laboratoryjne",
-                            Created = new DateTime(2023, 8, 18, 15, 19, 15, 6, DateTimeKind.Utc).AddTicks(9476),
+                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(5334),
                             CreatedBy = "charlie.b@test.com",
                             StatusId = 0
                         },
@@ -236,7 +236,7 @@ namespace AdoptionManager.Persistance.Migrations
                         {
                             Id = 2,
                             CategoryName = "Domowe",
-                            Created = new DateTime(2023, 8, 18, 15, 19, 15, 6, DateTimeKind.Utc).AddTicks(9477),
+                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(5336),
                             CreatedBy = "charlie.b@test.com",
                             StatusId = 0
                         },
@@ -244,7 +244,7 @@ namespace AdoptionManager.Persistance.Migrations
                         {
                             Id = 3,
                             CategoryName = "Szczury laboratoryjne",
-                            Created = new DateTime(2023, 8, 18, 15, 19, 15, 6, DateTimeKind.Utc).AddTicks(9478),
+                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(5338),
                             CreatedBy = "milva.b@test.com",
                             ParentCategoryId = 1,
                             StatusId = 0
@@ -253,7 +253,7 @@ namespace AdoptionManager.Persistance.Migrations
                         {
                             Id = 4,
                             CategoryName = "Gryzonie",
-                            Created = new DateTime(2023, 8, 18, 15, 19, 15, 6, DateTimeKind.Utc).AddTicks(9479),
+                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(5339),
                             CreatedBy = "milva.b@test.com",
                             StatusId = 0
                         });
@@ -319,9 +319,9 @@ namespace AdoptionManager.Persistance.Migrations
                         {
                             Id = 1,
                             ApplicationStatus = 2,
-                            Created = new DateTime(2023, 8, 18, 15, 19, 15, 6, DateTimeKind.Utc).AddTicks(9459),
+                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(5297),
                             CreatedBy = "sam.w@test.com",
-                            OrderDate = new DateTime(2023, 8, 18, 15, 19, 15, 6, DateTimeKind.Utc).AddTicks(9459),
+                            OrderDate = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(5296),
                             OrganizationId = 1,
                             ShippingId = 1,
                             SiteUserId = 3,
@@ -331,9 +331,9 @@ namespace AdoptionManager.Persistance.Migrations
                         {
                             Id = 2,
                             ApplicationStatus = 3,
-                            Created = new DateTime(2023, 8, 18, 15, 19, 15, 6, DateTimeKind.Utc).AddTicks(9461),
+                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(5299),
                             CreatedBy = "dean.w@test.com",
-                            OrderDate = new DateTime(2023, 8, 18, 15, 19, 15, 6, DateTimeKind.Utc).AddTicks(9461),
+                            OrderDate = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(5299),
                             OrganizationId = 2,
                             ShippingId = 2,
                             SiteUserId = 4,
@@ -395,10 +395,10 @@ namespace AdoptionManager.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2023, 8, 18, 15, 19, 15, 23, DateTimeKind.Utc).AddTicks(4146),
+                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 792, DateTimeKind.Utc).AddTicks(8794),
                             CreatedBy = "lab.rescue.adopcje@gmail.com",
                             ShipmentAddressId = 3,
-                            ShipmentDate = new DateTime(2023, 8, 28, 15, 19, 15, 23, DateTimeKind.Utc).AddTicks(4138),
+                            ShipmentDate = new DateTime(2023, 8, 28, 18, 44, 46, 792, DateTimeKind.Utc).AddTicks(8779),
                             ShipmentMethodId = 1,
                             ShipmentStatus = 2,
                             StatusId = 0
@@ -406,10 +406,10 @@ namespace AdoptionManager.Persistance.Migrations
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2023, 8, 18, 15, 19, 15, 23, DateTimeKind.Utc).AddTicks(4148),
+                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 792, DateTimeKind.Utc).AddTicks(8798),
                             CreatedBy = "kalipso@seed.com",
                             ShipmentAddressId = 4,
-                            ShipmentDate = new DateTime(2023, 9, 2, 15, 19, 15, 23, DateTimeKind.Utc).AddTicks(4147),
+                            ShipmentDate = new DateTime(2023, 9, 2, 18, 44, 46, 792, DateTimeKind.Utc).AddTicks(8797),
                             ShipmentMethodId = 2,
                             ShipmentStatus = 3,
                             StatusId = 0
@@ -465,7 +465,7 @@ namespace AdoptionManager.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2023, 8, 18, 15, 19, 15, 23, DateTimeKind.Utc).AddTicks(4179),
+                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 792, DateTimeKind.Utc).AddTicks(8864),
                             CreatedBy = "lab.rescue.adopcje@gmail.com",
                             Description = "Klient odbiera zwierzęta samodzielnie z domu tymczasowego",
                             OrganizationId = 1,
@@ -475,7 +475,7 @@ namespace AdoptionManager.Persistance.Migrations
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2023, 8, 18, 15, 19, 15, 23, DateTimeKind.Utc).AddTicks(4181),
+                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 792, DateTimeKind.Utc).AddTicks(8866),
                             CreatedBy = "kalipso@seed.com",
                             Description = "Wolontariusz przekazuje zwierzaka klientowi",
                             OrganizationId = 2,
@@ -536,7 +536,7 @@ namespace AdoptionManager.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2023, 8, 18, 15, 19, 15, 23, DateTimeKind.Utc).AddTicks(4258),
+                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 792, DateTimeKind.Utc).AddTicks(8974),
                             CreatedBy = "sam.w@test.com",
                             QuestionId = 1,
                             StatusId = 0,
@@ -546,7 +546,7 @@ namespace AdoptionManager.Persistance.Migrations
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2023, 8, 18, 15, 19, 15, 23, DateTimeKind.Utc).AddTicks(4259),
+                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 792, DateTimeKind.Utc).AddTicks(8976),
                             CreatedBy = "dean.w@test.com",
                             QuestionId = 2,
                             StatusId = 0,
@@ -556,11 +556,11 @@ namespace AdoptionManager.Persistance.Migrations
                         new
                         {
                             Id = 3,
-                            Created = new DateTime(2023, 8, 18, 15, 19, 15, 23, DateTimeKind.Utc).AddTicks(4260),
+                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 792, DateTimeKind.Utc).AddTicks(8977),
                             CreatedBy = "sam.w@test.com",
                             QuestionId = 3,
                             StatusId = 0,
-                            Text = "Tak, kota",
+                            Text = "Klatka Frodo: długość: 78cm, szerokość: 48cm, wysokość: 80cm. odległość między prętami: 1,3cm",
                             UserResponseId = 1
                         });
                 });
@@ -612,7 +612,7 @@ namespace AdoptionManager.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2023, 8, 18, 15, 19, 15, 23, DateTimeKind.Utc).AddTicks(4235),
+                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 792, DateTimeKind.Utc).AddTicks(8936),
                             CreatedBy = "lab.rescue.adopcje@gmail.com",
                             StatusId = 0,
                             SurveyId = 1,
@@ -621,7 +621,7 @@ namespace AdoptionManager.Persistance.Migrations
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2023, 8, 18, 15, 19, 15, 23, DateTimeKind.Utc).AddTicks(4236),
+                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 792, DateTimeKind.Utc).AddTicks(8938),
                             CreatedBy = "kalipso@seed.com",
                             StatusId = 0,
                             SurveyId = 2,
@@ -630,7 +630,7 @@ namespace AdoptionManager.Persistance.Migrations
                         new
                         {
                             Id = 3,
-                            Created = new DateTime(2023, 8, 18, 15, 19, 15, 23, DateTimeKind.Utc).AddTicks(4237),
+                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 792, DateTimeKind.Utc).AddTicks(8939),
                             CreatedBy = "lab.rescue.adopcje@gmail.com",
                             StatusId = 0,
                             SurveyId = 1,
@@ -684,7 +684,7 @@ namespace AdoptionManager.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2023, 8, 18, 15, 19, 15, 23, DateTimeKind.Utc).AddTicks(4209),
+                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 792, DateTimeKind.Utc).AddTicks(8902),
                             CreatedBy = "lab.rescue.adopcje@gmail.com",
                             Description = "Ankieta adopcji szczurów laboratoryjnych",
                             StatusId = 0,
@@ -693,7 +693,7 @@ namespace AdoptionManager.Persistance.Migrations
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2023, 8, 18, 15, 19, 15, 23, DateTimeKind.Utc).AddTicks(4211),
+                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 792, DateTimeKind.Utc).AddTicks(8903),
                             CreatedBy = "kalipso@seed.com",
                             Description = "Ankieta adopcji kotów",
                             StatusId = 0,
@@ -752,7 +752,7 @@ namespace AdoptionManager.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2023, 8, 18, 15, 19, 15, 23, DateTimeKind.Utc).AddTicks(4280),
+                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 792, DateTimeKind.Utc).AddTicks(9002),
                             CreatedBy = "sam.w@test.com",
                             SiteUserId = 3,
                             StatusId = 0,
@@ -761,7 +761,7 @@ namespace AdoptionManager.Persistance.Migrations
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2023, 8, 18, 15, 19, 15, 23, DateTimeKind.Utc).AddTicks(4282),
+                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 792, DateTimeKind.Utc).AddTicks(9003),
                             CreatedBy = "dean.w@test.com",
                             SiteUserId = 4,
                             StatusId = 0,
@@ -873,7 +873,7 @@ namespace AdoptionManager.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2023, 8, 18, 15, 19, 15, 7, DateTimeKind.Utc).AddTicks(395),
+                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(7992),
                             CreatedBy = "lab.rescue.adopcje@gmail.com",
                             Description = "Jedyna w Polsce organizacja zajmująca się adopcją zwierząt laboratoryjnych",
                             Name = "LabResque",
@@ -882,7 +882,7 @@ namespace AdoptionManager.Persistance.Migrations
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2023, 8, 18, 15, 19, 15, 7, DateTimeKind.Utc).AddTicks(397),
+                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(7995),
                             CreatedBy = "kalipso@seed.com",
                             Description = "Organizacja zajmująca się adopcją zwierząt domowych",
                             Name = "Kalipso",
@@ -918,8 +918,8 @@ namespace AdoptionManager.Persistance.Migrations
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("text");
 
-                    b.Property<int?>("Phone")
-                        .HasColumnType("integer");
+                    b.Property<string>("Phone")
+                        .HasColumnType("text");
 
                     b.Property<int>("Role")
                         .HasColumnType("integer");
@@ -935,7 +935,7 @@ namespace AdoptionManager.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2023, 8, 18, 15, 19, 15, 7, DateTimeKind.Utc).AddTicks(603),
+                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(8221),
                             CreatedBy = "seeder",
                             Role = 1,
                             StatusId = 0
@@ -943,36 +943,36 @@ namespace AdoptionManager.Persistance.Migrations
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2023, 8, 18, 15, 19, 15, 7, DateTimeKind.Utc).AddTicks(604),
+                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(8223),
                             CreatedBy = "seeder",
-                            Phone = 0,
+                            Phone = "000000000",
                             Role = 1,
                             StatusId = 0
                         },
                         new
                         {
                             Id = 3,
-                            Created = new DateTime(2023, 8, 18, 15, 19, 15, 7, DateTimeKind.Utc).AddTicks(606),
+                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(8224),
                             CreatedBy = "sam.w@test.com",
-                            Phone = 111111111,
+                            Phone = "111111111",
                             Role = 2,
                             StatusId = 0
                         },
                         new
                         {
                             Id = 4,
-                            Created = new DateTime(2023, 8, 18, 15, 19, 15, 7, DateTimeKind.Utc).AddTicks(607),
+                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(8225),
                             CreatedBy = "dean.w@test.com",
-                            Phone = 222222222,
+                            Phone = "222222222",
                             Role = 2,
                             StatusId = 0
                         },
                         new
                         {
                             Id = 5,
-                            Created = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(8227),
                             CreatedBy = "jack.k@test.com",
-                            Phone = 333333333,
+                            Phone = "333333333",
                             Role = 2,
                             StatusId = 0
                         });
@@ -1025,7 +1025,7 @@ namespace AdoptionManager.Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2023, 8, 18, 15, 19, 15, 8, DateTimeKind.Utc).AddTicks(531),
+                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 782, DateTimeKind.Utc).AddTicks(1886),
                             CreatedBy = "lab.rescue.adopcje@gmail.com",
                             IsDefault = false,
                             StatusId = 0,
@@ -1034,7 +1034,7 @@ namespace AdoptionManager.Persistance.Migrations
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2023, 8, 18, 15, 19, 15, 8, DateTimeKind.Utc).AddTicks(532),
+                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 782, DateTimeKind.Utc).AddTicks(1888),
                             CreatedBy = "kalipso@seed.com",
                             IsDefault = false,
                             StatusId = 0,
@@ -1043,7 +1043,7 @@ namespace AdoptionManager.Persistance.Migrations
                         new
                         {
                             Id = 5,
-                            Created = new DateTime(2023, 8, 18, 15, 19, 15, 8, DateTimeKind.Utc).AddTicks(533),
+                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 782, DateTimeKind.Utc).AddTicks(1889),
                             CreatedBy = "lab.rescue.adopcje@gmail.com",
                             IsDefault = true,
                             StatusId = 0,
@@ -1052,7 +1052,7 @@ namespace AdoptionManager.Persistance.Migrations
                         new
                         {
                             Id = 6,
-                            Created = new DateTime(2023, 8, 18, 15, 19, 15, 8, DateTimeKind.Utc).AddTicks(534),
+                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 782, DateTimeKind.Utc).AddTicks(1890),
                             CreatedBy = "kalipso@seed.com",
                             IsDefault = true,
                             StatusId = 0,
@@ -1075,7 +1075,7 @@ namespace AdoptionManager.Persistance.Migrations
                         new
                         {
                             Id = 3,
-                            Created = new DateTime(2023, 8, 18, 15, 19, 15, 16, DateTimeKind.Utc).AddTicks(8337),
+                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 784, DateTimeKind.Utc).AddTicks(9582),
                             CreatedBy = "sam.w@test.com",
                             IsDefault = false,
                             StatusId = 0,
@@ -1084,7 +1084,7 @@ namespace AdoptionManager.Persistance.Migrations
                         new
                         {
                             Id = 4,
-                            Created = new DateTime(2023, 8, 18, 15, 19, 15, 16, DateTimeKind.Utc).AddTicks(8340),
+                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 784, DateTimeKind.Utc).AddTicks(9583),
                             CreatedBy = "dean.w@test.com",
                             IsDefault = false,
                             StatusId = 0,
