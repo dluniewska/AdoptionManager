@@ -23,8 +23,8 @@ namespace AdoptionManager.Domain.Entities.Product
         public int OrganizationId { get; set; }
         public Organization Organization { get; set; }
 
-        public int ShippingMethodId { get; set; }
-        public ShippingMethod ShippingMethod { get; set; }
+        public int ShippingId { get; set; }
+        public ShippingData Shipping { get; set; }
 
         public DateTime OrderDate { get; set; }
 

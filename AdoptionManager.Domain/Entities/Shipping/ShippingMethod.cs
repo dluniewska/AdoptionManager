@@ -1,4 +1,5 @@
 ﻿using AdoptionManager.Domain.Common;
+using AdoptionManager.Domain.Entities.Users;
 
 namespace AdoptionManager.Domain.Entities.Shipping
 {
@@ -11,6 +12,9 @@ namespace AdoptionManager.Domain.Entities.Shipping
 
     public class ShippingMethod : AuditableEntity
     {
+        public int OrganizationId { get; set; }
+        public Organization Organization { get; set; }
+
         public ShippingType ShippingType { get; set; }
         public string? Description { get; set; }
     }

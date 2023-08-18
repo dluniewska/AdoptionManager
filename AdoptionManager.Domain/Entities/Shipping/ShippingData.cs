@@ -12,7 +12,7 @@ namespace AdoptionManager.Domain.Entities.Shipping
         CANCELLED = 5
     }
 
-    public class Shipping : AuditableEntity
+    public class ShippingData : AuditableEntity
     {
         public DateTime ShipmentDate { get; set; }
         public ShipmentStatus ShipmentStatus { get; set; }

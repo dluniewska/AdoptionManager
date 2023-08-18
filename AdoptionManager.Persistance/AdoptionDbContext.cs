@@ -27,7 +27,7 @@ namespace AdoptionManager.Persistance
         public DbSet<OrganizationAddress> OrganizationAddresses { get; set; }
 
         //Shipping
-        public DbSet<Shipping> Shippings { get; set; }
+        public DbSet<ShippingData> Shippings { get; set; }
         public DbSet<ShippingMethod> ShippingMethods { get; set; }
 
         //Survey
@@ -35,6 +35,12 @@ namespace AdoptionManager.Persistance
         public DbSet<Question> Questions { get; set; }
         public DbSet<Answer> Answers { get; set; }
         public DbSet<UserResponse> UserResponses { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.EnableSensitiveDataLogging();
+            base.OnConfiguring(optionsBuilder);
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -63,29 +69,18 @@ namespace AdoptionManager.Persistance
             modelBuilder.Entity<Organization>(organization =>
             {
                 organization.Property(o => o.Id).UseIdentityColumn();
-                organization.OwnsOne(o => o.Email);
+                organization.OwnsOne(o => o.Email).HasIndex(e => new { e.UserName, e.DomainName }).IsUnique();
             });
 
             modelBuilder.Entity<SiteUser>(siteUser =>
             {
                 siteUser.Property(su => su.Id).UseIdentityColumn();
-                siteUser.OwnsOne(su => su.SiteUserName);
-                siteUser.OwnsOne(su => su.Email);
-            });
-
-            modelBuilder.Entity<OrganizationAddress>(address =>
-            {
-                address.OwnsOne(a => a.AddressObj);
-            });
-
-            modelBuilder.Entity<SiteUserAddress>(address =>
-            {
-                address.OwnsOne(a => a.AddressObj);
+                siteUser.OwnsOne(su => su.Email).HasIndex(e => new { e.UserName, e.DomainName }).IsUnique();
             });
 
 
 
-            modelBuilder.Entity<Shipping>(shipping =>
+            modelBuilder.Entity<ShippingData>(shipping =>
             {
                 shipping.Property(s => s.Id).UseIdentityColumn();
             });
@@ -128,20 +123,20 @@ namespace AdoptionManager.Persistance
                 switch(entry.State)
                 {
                     case EntityState.Added:
-                        entry.Entity.Created = DateTime.Now;
+                        entry.Entity.Created = DateTime.UtcNow;
                         entry.Entity.CreatedBy = string.Empty;
-                        entry.Entity.StatusId = 1; //active
+                        entry.Entity.StatusId = 0; //active
                         break;
                     case EntityState.Modified:
-                        entry.Entity.Modified = DateTime.Now;
+                        entry.Entity.Modified = DateTime.UtcNow;
                         entry.Entity.ModifiedBy = string.Empty;
                         break;
                     case EntityState.Deleted:
-                        entry.Entity.Modified = DateTime.Now;
+                        entry.Entity.Modified = DateTime.UtcNow;
                         entry.Entity.ModifiedBy = string.Empty;
-                        entry.Entity.Inactivated = DateTime.Now;
+                        entry.Entity.Inactivated = DateTime.UtcNow;
                         entry.Entity.InactivatedBy = string.Empty;
-                        entry.Entity.StatusId = 0; //inactive
+                        entry.Entity.StatusId = 1; //inactive
                         entry.State = EntityState.Modified;
                         break;
                 }
@@ -156,20 +151,20 @@ namespace AdoptionManager.Persistance
                 switch (entry.State)
                 {
                     case EntityState.Added:
-                        entry.Entity.Created = DateTime.Now;
+                        entry.Entity.Created = DateTime.UtcNow;
                         entry.Entity.CreatedBy = string.Empty;
-                        entry.Entity.StatusId = 1; //active
+                        entry.Entity.StatusId = 0; //active
                         break;
                     case EntityState.Modified:
-                        entry.Entity.Modified = DateTime.Now;
+                        entry.Entity.Modified = DateTime.UtcNow;
                         entry.Entity.ModifiedBy = string.Empty;
                         break;
                     case EntityState.Deleted:
-                        entry.Entity.Modified = DateTime.Now;
+                        entry.Entity.Modified = DateTime.UtcNow;
                         entry.Entity.ModifiedBy = string.Empty;
-                        entry.Entity.Inactivated = DateTime.Now;
+                        entry.Entity.Inactivated = DateTime.UtcNow;
                         entry.Entity.InactivatedBy = string.Empty;
-                        entry.Entity.StatusId = 0; //inactive
+                        entry.Entity.StatusId = 1; //inactive
                         entry.State = EntityState.Modified;
                         break;
                 }
@@ -184,20 +179,20 @@ namespace AdoptionManager.Persistance
                 switch (entry.State)
                 {
                     case EntityState.Added:
-                        entry.Entity.Created = DateTime.Now;
+                        entry.Entity.Created = DateTime.UtcNow;
                         entry.Entity.CreatedBy = string.Empty;
-                        entry.Entity.StatusId = 1; //active
+                        entry.Entity.StatusId = 0; //active
                         break;
                     case EntityState.Modified:
-                        entry.Entity.Modified = DateTime.Now;
+                        entry.Entity.Modified = DateTime.UtcNow;
                         entry.Entity.ModifiedBy = string.Empty;
                         break;
                     case EntityState.Deleted:
-                        entry.Entity.Modified = DateTime.Now;
+                        entry.Entity.Modified = DateTime.UtcNow;
                         entry.Entity.ModifiedBy = string.Empty;
-                        entry.Entity.Inactivated = DateTime.Now;
+                        entry.Entity.Inactivated = DateTime.UtcNow;
                         entry.Entity.InactivatedBy = string.Empty;
-                        entry.Entity.StatusId = 0; //inactive
+                        entry.Entity.StatusId = 1; //inactive
                         entry.State = EntityState.Modified;
                         break;
                 }
@@ -213,20 +208,20 @@ namespace AdoptionManager.Persistance
                 switch (entry.State)
                 {
                     case EntityState.Added:
-                        entry.Entity.Created = DateTime.Now;
+                        entry.Entity.Created = DateTime.UtcNow;
                         entry.Entity.CreatedBy = string.Empty;
-                        entry.Entity.StatusId = 1; //active
+                        entry.Entity.StatusId = 0; //active
                         break;
                     case EntityState.Modified:
-                        entry.Entity.Modified = DateTime.Now;
+                        entry.Entity.Modified = DateTime.UtcNow;
                         entry.Entity.ModifiedBy = string.Empty;
                         break;
                     case EntityState.Deleted:
-                        entry.Entity.Modified = DateTime.Now;
+                        entry.Entity.Modified = DateTime.UtcNow;
                         entry.Entity.ModifiedBy = string.Empty;
-                        entry.Entity.Inactivated = DateTime.Now;
+                        entry.Entity.Inactivated = DateTime.UtcNow;
                         entry.Entity.InactivatedBy = string.Empty;
-                        entry.Entity.StatusId = 0; //inactive
+                        entry.Entity.StatusId = 1; //inactive
                         entry.State = EntityState.Modified;
                         break;
                 }

@@ -21,14 +21,18 @@ namespace AdoptionManager.Persistance
                         Id = 1,
                         Name = "Szczur Wistar",
                         Species = "Szczur",
-                        BirthDate = DateTime.Now.AddMonths(-10)
+                        BirthDate = DateOnly.FromDateTime(DateTime.UtcNow.AddMonths(-10)),
+                        CreatedBy = "lab.rescue.adopcje@gmail.com",
+                        Created = DateTime.UtcNow
                     },
                     new Animal()
                     {
                         Id= 2,
                         Name = "Ragdoll",
                         Species = "Kot",
-                        BirthDate = DateTime.Now.AddYears(-3)
+                        BirthDate = DateOnly.FromDateTime(DateTime.UtcNow.AddYears(-3)),
+                        CreatedBy = "kalipso@seed.com",
+                        Created = DateTime.UtcNow
                     }
                 );
             });
@@ -44,7 +48,9 @@ namespace AdoptionManager.Persistance
                         QuatntityInStock = 30,
                         SurveyId = 1, 
                         OrganizationId = 1,
-                        Description = "Zwierzęta z nadwyżki hodowlanej, lub po nieinwazyjnych testach"
+                        Description = "Zwierzęta z nadwyżki hodowlanej, lub po nieinwazyjnych testach",
+                        CreatedBy = "lab.rescue.adopcje@gmail.com",
+                        Created = DateTime.UtcNow
                     },
                     new AdoptionOffer()
                     {
@@ -54,7 +60,9 @@ namespace AdoptionManager.Persistance
                         QuatntityInStock = 2,
                         SurveyId = 2,
                         OrganizationId = 2,
-                        Description = "Kociaki znalezione na ulicy"
+                        Description = "Koty znalezione na ulicy",
+                        CreatedBy = "kalipso@seed.com",
+                        Created = DateTime.UtcNow
                     }
                 );
             });
@@ -65,20 +73,24 @@ namespace AdoptionManager.Persistance
                     new AdoptionApplication() 
                     {   
                         Id = 1,
-                        SiteUserId = 1,
+                        SiteUserId = 3,
                         ApplicationStatus = ApplicationStatus.PENDING,
                         OrganizationId = 1,
-                        ShippingMethodId = 1,
-                        OrderDate = DateTime.Now,
+                        ShippingId = 1,
+                        OrderDate = DateTime.UtcNow,
+                        CreatedBy = "sam.w@test.com",
+                        Created = DateTime.UtcNow,
                     },
                     new AdoptionApplication()
                     {
                         Id = 2,
-                        SiteUserId = 2,
+                        SiteUserId = 4,
                         ApplicationStatus = ApplicationStatus.PROCESSED,
                         OrganizationId = 2,
-                        ShippingMethodId = 2,
-                        OrderDate = DateTime.Now,
+                        ShippingId = 2,
+                        OrderDate = DateTime.UtcNow,
+                        CreatedBy = "dean.w@test.com",
+                        Created = DateTime.UtcNow,
                     }
                 );
             });
@@ -90,25 +102,33 @@ namespace AdoptionManager.Persistance
                     {
                         Id = 1,
                         ParentCategoryId = null,
-                        CategoryName = "Laboratoryjne"
+                        CategoryName = "Laboratoryjne",
+                        CreatedBy = "charlie.b@test.com",
+                        Created = DateTime.UtcNow
                     },
                     new AnimalCategory()
                     {
                         Id= 2,
                         ParentCategoryId = null,
-                        CategoryName = "Domowe"
+                        CategoryName = "Domowe",
+                        CreatedBy = "charlie.b@test.com",
+                        Created = DateTime.UtcNow
                     },
                     new AnimalCategory()
                     {
                         Id = 3,
                         ParentCategoryId = 1,
-                        CategoryName = "Szczury laboratoryjne"
+                        CategoryName = "Szczury laboratoryjne",
+                        CreatedBy = "milva.b@test.com",
+                        Created = DateTime.UtcNow
                     },
                     new AnimalCategory()
                     {
                         Id = 4, 
                         ParentCategoryId = null,
-                        CategoryName = "Gryzonie"
+                        CategoryName = "Gryzonie",
+                        CreatedBy = "milva.b@test.com",
+                        Created = DateTime.UtcNow
                     }
                 );
             });
@@ -119,18 +139,18 @@ namespace AdoptionManager.Persistance
                 .UsingEntity(e => e.HasData(
                     new
                     {
-                        AdoptionOffers = 1,
-                        AnimalCategories = 3
+                        AdoptionOffersId = 1,
+                        AnimalCategoriesId = 3
                     },
                     new
                     {
-                        AdoptionOffers = 1,
-                        AnimalCategories = 4
+                        AdoptionOffersId = 1,
+                        AnimalCategoriesId = 4
                     },
                     new
                     {
-                        AdoptionOffers = 2,
-                        AnimalCategories = 2
+                        AdoptionOffersId = 2,
+                        AnimalCategoriesId = 2
                     }
                 ));
 
@@ -144,13 +164,18 @@ namespace AdoptionManager.Persistance
                         Id = 1,
                         Name = "LabResque",
                         Description = "Jedyna w Polsce organizacja zajmująca się adopcją zwierząt laboratoryjnych",
-                        Phone = null
+                        Phone = null,
+                        CreatedBy = "lab.rescue.adopcje@gmail.com",
+                        Created = DateTime.UtcNow,
                     },
                     new Organization()
                     {
                         Id= 2,
                         Name = "Kalipso",
-                        Description = "Szczury szczurom szczurami"
+                        Description = "Organizacja zajmująca się adopcją zwierząt domowych",
+                        Phone = 777777777, 
+                        CreatedBy = "kalipso@seed.com",
+                        Created= DateTime.UtcNow
                     }
                 );
                 organization.OwnsOne(o => o.Email).HasData(
@@ -158,13 +183,13 @@ namespace AdoptionManager.Persistance
                     { 
                         OrganizationId = 1, 
                         UserName = "lab.rescue.adopcje",
-                        Domain = "gmail.com"
+                        DomainName = "gmail.com"
                     },
                     new
                     {
                         OrganizationId = 2,
                         UserName = "kalipso",
-                        Domain = "rat.com"
+                        DomainName = "seed.com"
                     }
                 );
             });
@@ -175,55 +200,103 @@ namespace AdoptionManager.Persistance
                     new SiteUser()
                     {
                         Id = 1,
-                        Phone = 111111111,
+                        Phone = null,
+                        Role = RoleType.ADMIN,
+                        CreatedBy = "seeder",
+                        Created = DateTime.UtcNow
                     },
                     new SiteUser()
                     {
                         Id = 2,
-                        Phone = 222222222
+                        Phone = 000000000,
+                        Role = RoleType.ADMIN,
+                        CreatedBy = "seeder",
+                        Created = DateTime.UtcNow
                     },
                     new SiteUser()
                     {
                         Id = 3,
-                        Phone = 333333333
+                        Phone = 111111111,
+                        Role = RoleType.USER,
+                        CreatedBy = "sam.w@test.com",
+                        Created = DateTime.UtcNow
+                    },
+                    new SiteUser()
+                    {
+                        Id = 4,
+                        Phone = 222222222,
+                        Role = RoleType.USER,
+                        CreatedBy = "dean.w@test.com",
+                        Created= DateTime.UtcNow
+                    },
+                    new SiteUser()
+                    {
+                        Id = 5,
+                        Phone = 333333333,
+                        Role = RoleType.USER,
+                        CreatedBy = "jack.k@test.com"
                     }
                 );
                 siteUser.OwnsOne(o => o.Email).HasData(
                     new
                     {
                         SiteUserId = 1,
-                        UserName = "sam.w",
-                        Domain = "test"
+                        UserName = "charlie.b",
+                        DomainName = "test.com"
                     },
                     new
                     {
                         SiteUserId = 2,
-                        UserName = "dean.w",
-                        Domain = "test"
+                        UserName = "milva.b",
+                        DomainName = "test.com"
                     },
                     new
                     {
                         SiteUserId = 3,
+                        UserName = "sam.w",
+                        DomainName = "test.com"
+                    },
+                    new
+                    {
+                        SiteUserId = 4,
+                        UserName = "dean.w",
+                        DomainName = "test.com"
+                    },
+                    new
+                    {
+                        SiteUserId = 5,
                         UserName = "jack.k",
-                        Domain = "test"
+                        DomainName = "test.com"
                     }
                 );
                 siteUser.OwnsOne(o => o.SiteUserName).HasData(
                     new
                     {
                         SiteUserId = 1,
+                        FirstName = "Charlie",
+                        LastName = "Bradbury"
+                    },
+                    new
+                    {
+                        SiteUserId = 2,
+                        FirstName = "Milva",
+                        LastName = "Barring"
+                    },
+                    new
+                    {
+                        SiteUserId = 3,
                         FirstName = "Sam",
                         LastName = "Winchester"
                     },
                     new
                     {
-                        SiteUserId = 2,
+                        SiteUserId = 4,
                         FirstName = "Dean",
                         LastName = "Winchester"
                     },
                     new
                     {
-                        SiteUserId = 3,
+                        SiteUserId = 5,
                         FirstName = "Jack",
                         LastName = "Kline"
                     }
@@ -237,21 +310,79 @@ namespace AdoptionManager.Persistance
                     {
                         Id = 1,
                         IsDefault = false,
+                        OrganizationId = 1,
+                        CreatedBy = "lab.rescue.adopcje@gmail.com",
+                        Created = DateTime.UtcNow,
                     },
                     new OrganizationAddress() // Adoption Offer 2 Residency address
                     {
                         Id = 2,
                         IsDefault = false,
+                        OrganizationId = 2,
+                        CreatedBy = "kalipso@seed.com",
+                        Created = DateTime.UtcNow,
                     },
                     new OrganizationAddress() // Organization 1 address
                     {
                         Id = 5,
                         IsDefault = true,
+                        OrganizationId = 1,
+                        CreatedBy = "lab.rescue.adopcje@gmail.com",
+                        Created = DateTime.UtcNow,
                     },
                     new OrganizationAddress() // Organization 2 address
                     {
                         Id = 6,
                         IsDefault = true,
+                        OrganizationId = 2,
+                        CreatedBy = "kalipso@seed.com",
+                        Created = DateTime.UtcNow,
+                    }
+                );
+                address.OwnsOne(a => a.AddressObj).HasData(
+                    new
+                    {
+                        OrganizationAddressId = 1,
+                        StreetName = "Ulica1",
+                        BuildingNumber = "1",
+                        ApartmentNumber = "1",
+                        ZipCode = "11-111",
+                        City = "Gdańsk",
+                        Country = "Polska",
+
+                    },
+                    new
+                    {
+                        OrganizationAddressId = 2,
+                        StreetName = "Ulica2",
+                        BuildingNumber = "2",
+                        ApartmentNumber = "2",
+                        ZipCode = "22-222",
+                        City = "Gdynia",
+                        Country = "Polska",
+
+                    },
+                    new
+                    {
+                        OrganizationAddressId = 5,
+                        StreetName = "Ulica5",
+                        BuildingNumber = "5",
+                        ApartmentNumber = "5",
+                        ZipCode = "55-555",
+                        City = "Sopot",
+                        Country = "Polska",
+
+                    },
+                    new
+                    {
+                        OrganizationAddressId = 6,
+                        StreetName = "Ulica6",
+                        BuildingNumber = "6",
+                        ApartmentNumber = "6",
+                        ZipCode = "66-666",
+                        City = "Malbork",
+                        Country = "Polska",
+
                     }
                 );
             });
@@ -263,35 +394,69 @@ namespace AdoptionManager.Persistance
                     {
                         Id = 3,
                         IsDefault = false,
+                        SiteUserId = 3,
+                        CreatedBy = "sam.w@test.com",
+                        Created = DateTime.UtcNow,
                     },
                     new SiteUserAddress() // Shipping 2 address
                     {
                         Id = 4,
                         IsDefault = false,
+                        SiteUserId = 4,
+                        CreatedBy = "dean.w@test.com",
+                        Created = DateTime.UtcNow,
+                    }
+                );
+                address.OwnsOne(a => a.AddressObj).HasData(
+                    new
+                    {
+                        SiteUserAddressId = 3,
+                        StreetName = "Ulica3",
+                        BuildingNumber = "3",
+                        ApartmentNumber = "3",
+                        ZipCode = "33-333",
+                        City = "Ciechanowiec",
+                        Country = "Polska",
+
+                    },
+                    new
+                    {
+                        SiteUserAddressId = 4,
+                        StreetName = "Ulica4",
+                        BuildingNumber = "4",
+                        ApartmentNumber = "4",
+                        ZipCode = "44-444",
+                        City = "Warszawa",
+                        Country = "Polska",
+
                     }
                 );
             });
 
 
             //Shipping
-            modelBuilder.Entity<Shipping>(shipping =>
+            modelBuilder.Entity<ShippingData>(shipping =>
             {
                 shipping.HasData(
-                    new Shipping()
+                    new ShippingData()
                     {
                         Id = 1,
                         ShipmentAddressId = 3, //Shipping 1 Address
-                        ShipmentDate = DateTime.Now.AddDays(10),
+                        ShipmentDate = DateTime.UtcNow.AddDays(10),
                         ShipmentMethodId = 1,
                         ShipmentStatus = ShipmentStatus.PENDING,
+                        CreatedBy = "lab.rescue.adopcje@gmail.com",
+                        Created = DateTime.UtcNow
                     },
-                    new Shipping()
+                    new ShippingData()
                     {
                         Id = 2, 
                         ShipmentAddressId = 4, //Shipping 2 Address
-                        ShipmentDate = DateTime.Now.AddDays(15),
+                        ShipmentDate = DateTime.UtcNow.AddDays(15),
                         ShipmentMethodId = 2,
-                        ShipmentStatus = ShipmentStatus.PROCESSED
+                        ShipmentStatus = ShipmentStatus.PROCESSED,
+                        CreatedBy = "kalipso@seed.com",
+                        Created = DateTime.UtcNow
                     }
                 );
             });
@@ -302,14 +467,20 @@ namespace AdoptionManager.Persistance
                     new ShippingMethod()
                     {
                         Id= 1,
-                        Description = "",
-                        ShippingType = ShippingType.CLIENT
+                        Description = "Klient odbiera zwierzęta samodzielnie z domu tymczasowego",
+                        ShippingType = ShippingType.CLIENT,
+                        OrganizationId = 1,
+                        CreatedBy = "lab.rescue.adopcje@gmail.com",
+                        Created = DateTime.UtcNow
                     },
                     new ShippingMethod()
                     {
                         Id = 2,
-                        Description = "",
-                        ShippingType = ShippingType.VOLUNTEER
+                        Description = "Wolontariusz przekazuje zwierzaka klientowi",
+                        ShippingType = ShippingType.VOLUNTEER,
+                        OrganizationId = 2,
+                        CreatedBy = "kalipso@seed.com",
+                        Created = DateTime.UtcNow
                     }
                 );
             });
@@ -324,12 +495,16 @@ namespace AdoptionManager.Persistance
                         Id = 1,
                         Description = "Ankieta adopcji szczurów laboratoryjnych",
                         Title = "Szczury laboratoryjne",
+                        CreatedBy = "lab.rescue.adopcje@gmail.com",
+                        Created = DateTime.UtcNow
                     },
                     new Survey()
                     {
                         Id = 2,
                         Description = "Ankieta adopcji kotów",
                         Title = "Koty",
+                        CreatedBy = "kalipso@seed.com",
+                        Created = DateTime.UtcNow
                     }
                 );
             });
@@ -340,17 +515,26 @@ namespace AdoptionManager.Persistance
                     new Question()
                     {
                         Id = 1,
-                        Text = "Czy posiadasz już jakies zwierzęta?"
+                        Text = "Czy posiadasz już jakies zwierzęta?",
+                        SurveyId = 1,
+                        CreatedBy = "lab.rescue.adopcje@gmail.com",
+                        Created = DateTime.UtcNow
                     },
                     new Question()
                     {
                         Id = 2,
-                        Text = "Gdzie zwierzę będzie przebywało w czasie urlopu/wakacji?"
+                        Text = "Gdzie zwierzę będzie przebywało w czasie urlopu/wakacji?",
+                        SurveyId = 2,
+                        CreatedBy = "kalipso@seed.com",
+                        Created = DateTime.UtcNow
                     },
                     new Question()
                     {
                         Id = 3,
-                        Text = "Jakie wymiary będzie miała klatka?"
+                        Text = "Jakie wymiary będzie miała klatka?",
+                        SurveyId = 1,
+                        CreatedBy = "lab.rescue.adopcje@gmail.com",
+                        Created = DateTime.UtcNow
                     }
                 );
             });
@@ -362,19 +546,28 @@ namespace AdoptionManager.Persistance
                     {
                         Id = 1,
                         QuestionId = 1,
-                        Text = "Tak, kota"
+                        UserResponseId = 1,
+                        Text = "Tak, kota",
+                        CreatedBy = "sam.w@test.com",
+                        Created = DateTime.UtcNow
                     },
                     new Answer()
                     {
                         Id = 2,
                         QuestionId = 2,
-                        Text = "U rodziców"
+                        UserResponseId = 2,
+                        Text = "U rodziców",
+                        CreatedBy = "dean.w@test.com",
+                        Created = DateTime.UtcNow
                     },
                     new Answer()
                     {
                         Id = 3,
                         QuestionId = 3,
-                        Text = "Tak, kota"
+                        UserResponseId = 1,
+                        Text = "Tak, kota",
+                        CreatedBy = "sam.w@test.com",
+                        Created = DateTime.UtcNow
                     }
                 );
             });
@@ -385,13 +578,17 @@ namespace AdoptionManager.Persistance
                     {
                         Id = 1,
                         SurveyId = 1,
-                        SiteUserId = 1,
+                        SiteUserId = 3,
+                        CreatedBy = "sam.w@test.com",
+                        Created = DateTime.UtcNow
                     },
                     new UserResponse()
                     {
                         Id = 2,
                         SurveyId = 2,
-                        SiteUserId = 2,
+                        SiteUserId = 4,
+                        CreatedBy = "dean.w@test.com",
+                        Created = DateTime.UtcNow
                     }
                 );
             });
