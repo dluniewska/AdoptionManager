@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AdoptionManager.Application\AdoptionManager.Application.csproj" />
     <ProjectReference Include="..\AdoptionManager.Domain\AdoptionManager.Domain.csproj" />
   </ItemGroup>
 

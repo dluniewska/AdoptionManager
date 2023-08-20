@@ -1,6 +1,7 @@
 global using System;
 using Microsoft.OpenApi.Models;
 using AdoptionManager.Persistance;
+using AdoptionManager.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,7 @@ var allowedOrigins = builder.Configuration.GetSection("AllowedOrigins").Get<List
 // Add services to the container.
 
 builder.Services.AddPersistance(builder.Configuration);
+builder.Services.AddInfrastructure(builder.Configuration);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
