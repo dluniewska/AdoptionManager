@@ -9,6 +9,8 @@ namespace AdoptionManager.Persistance.Configurations.Users
         public void Configure(EntityTypeBuilder<SiteUser> builder)
         {
             builder.Property(su => su.Id).UseIdentityColumn();
+            builder.Property(su => su.Role).HasDefaultValue(RoleType.USER).IsRequired();
+
             builder.OwnsOne(su => su.Email).HasIndex(e => new { e.UserName, e.DomainName }).IsUnique();
         }
     }

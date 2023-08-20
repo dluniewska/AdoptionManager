@@ -9,6 +9,7 @@ namespace AdoptionManager.Persistance.Configurations.Shipping
         public void Configure(EntityTypeBuilder<ShippingData> builder)
         {
             builder.Property(s => s.Id).UseIdentityColumn();
+            builder.Property(s => s.ShipmentStatus).HasDefaultValue(ShipmentStatus.PENDING);
         }
     }
 }
