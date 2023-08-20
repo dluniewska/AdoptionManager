@@ -6,6 +6,7 @@ using AdoptionManager.Domain.Entities.Surveys;
 using AdoptionManager.Domain.Entities.Users;
 using AdoptionManager.Domain.Entities.Users.Addresses;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace AdoptionManager.Persistance
 {
@@ -44,74 +45,7 @@ namespace AdoptionManager.Persistance
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Animal>(animal =>
-            {
-                animal.Property(a => a.Id).UseIdentityColumn();
-            });
-
-            modelBuilder.Entity<AdoptionOffer>(adoptionOffer =>
-            {
-                adoptionOffer.Property(ao => ao.Id).UseIdentityColumn();
-            });
-
-            modelBuilder.Entity<AdoptionApplication>(adoptionApplication =>
-            {
-                adoptionApplication.Property(ac => ac.Id).UseIdentityColumn();
-            });
-
-            modelBuilder.Entity<AnimalCategory>(animalCategory =>
-            {
-                animalCategory.Property(ac => ac.Id).UseIdentityColumn();
-            });
-
-
-
-            modelBuilder.Entity<Organization>(organization =>
-            {
-                organization.Property(o => o.Id).UseIdentityColumn();
-                organization.OwnsOne(o => o.Email).HasIndex(e => new { e.UserName, e.DomainName }).IsUnique();
-            });
-
-            modelBuilder.Entity<SiteUser>(siteUser =>
-            {
-                siteUser.Property(su => su.Id).UseIdentityColumn();
-                siteUser.OwnsOne(su => su.Email).HasIndex(e => new { e.UserName, e.DomainName }).IsUnique();
-            });
-
-
-
-            modelBuilder.Entity<ShippingData>(shipping =>
-            {
-                shipping.Property(s => s.Id).UseIdentityColumn();
-            });
-
-            modelBuilder.Entity<ShippingMethod>(shippingMethod =>
-            {
-                shippingMethod.Property(sm => sm.Id).UseIdentityColumn();
-            });
-
-
-
-            modelBuilder.Entity<Survey>(survey =>
-            {
-                survey.Property(s => s.Id).UseIdentityColumn();
-            });
-
-            modelBuilder.Entity<Question>(question =>
-            {
-                question.Property(q => q.Id).UseIdentityColumn();
-            });
-
-            modelBuilder.Entity<Answer>(answer =>
-            {
-                answer.Property(a => a.Id).UseIdentityColumn();
-            });
-            modelBuilder.Entity<UserResponse>(userResponse =>
-            {
-                userResponse.Property(us => us.Id).UseIdentityColumn();
-            });
-
-
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             modelBuilder.SeedData();
         }
 
