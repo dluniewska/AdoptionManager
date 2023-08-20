@@ -9,7 +9,6 @@ namespace AdoptionManager.Persistance.Configurations.Users
         public void Configure(EntityTypeBuilder<Address> builder)
         {
             builder.Property(a => a.Id).UseIdentityColumn();
-            builder.OwnsOne(o => o.AddressObj);
         }
     }
 }

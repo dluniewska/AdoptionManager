@@ -10,7 +10,7 @@ namespace AdoptionManager.Persistance.Configurations.Surveys
         {
             builder.Property(s => s.Id).UseIdentityColumn();
             builder.Property(s => s.Title).HasMaxLength(50).IsRequired();
-            builder.Property(s => s.Description).HasMaxLength(30).IsRequired();
+            builder.Property(s => s.Description).HasMaxLength(300).IsRequired();
         }
     }
 }
