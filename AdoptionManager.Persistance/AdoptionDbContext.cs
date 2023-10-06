@@ -54,7 +54,7 @@ namespace AdoptionManager.Persistance
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-            modelBuilder.SeedData();
+            //modelBuilder.SeedData();
         }
 
 
@@ -84,92 +84,6 @@ namespace AdoptionManager.Persistance
                 }
             }
             return base.SaveChangesAsync(cancellationToken);
-        }
-
-        public override int SaveChanges()
-        {
-            foreach (var entry in ChangeTracker.Entries<AuditableEntity>())
-            {
-                switch (entry.State)
-                {
-                    case EntityState.Added:
-                        entry.Entity.Created = _dateTime.UtcNow;
-                        entry.Entity.CreatedBy = string.Empty;
-                        entry.Entity.StatusId = 0; //active
-                        break;
-                    case EntityState.Modified:
-                        entry.Entity.Modified = _dateTime.UtcNow;
-                        entry.Entity.ModifiedBy = string.Empty;
-                        break;
-                    case EntityState.Deleted:
-                        entry.Entity.Modified = _dateTime.UtcNow;
-                        entry.Entity.ModifiedBy = string.Empty;
-                        entry.Entity.Inactivated = _dateTime.UtcNow;
-                        entry.Entity.InactivatedBy = string.Empty;
-                        entry.Entity.StatusId = 1; //inactive
-                        entry.State = EntityState.Modified;
-                        break;
-                }
-            }
-            return base.SaveChanges();
-        }
-
-        public override int SaveChanges(bool acceptAllChangesOnSuccess)
-        {
-            foreach (var entry in ChangeTracker.Entries<AuditableEntity>())
-            {
-                switch (entry.State)
-                {
-                    case EntityState.Added:
-                        entry.Entity.Created = _dateTime.UtcNow;
-                        entry.Entity.CreatedBy = string.Empty;
-                        entry.Entity.StatusId = 0; //active
-                        break;
-                    case EntityState.Modified:
-                        entry.Entity.Modified = _dateTime.UtcNow;
-                        entry.Entity.ModifiedBy = string.Empty;
-                        break;
-                    case EntityState.Deleted:
-                        entry.Entity.Modified = _dateTime.UtcNow;
-                        entry.Entity.ModifiedBy = string.Empty;
-                        entry.Entity.Inactivated = _dateTime.UtcNow;
-                        entry.Entity.InactivatedBy = string.Empty;
-                        entry.Entity.StatusId = 1; //inactive
-                        entry.State = EntityState.Modified;
-                        break;
-                }
-            }
-
-            return base.SaveChanges(acceptAllChangesOnSuccess);
-        }
-
-        public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
-        {
-            foreach (var entry in ChangeTracker.Entries<AuditableEntity>())
-            {
-                switch (entry.State)
-                {
-                    case EntityState.Added:
-                        entry.Entity.Created = _dateTime.UtcNow;
-                        entry.Entity.CreatedBy = string.Empty;
-                        entry.Entity.StatusId = 0; //active
-                        break;
-                    case EntityState.Modified:
-                        entry.Entity.Modified = _dateTime.UtcNow;
-                        entry.Entity.ModifiedBy = string.Empty;
-                        break;
-                    case EntityState.Deleted:
-                        entry.Entity.Modified = _dateTime.UtcNow;
-                        entry.Entity.ModifiedBy = string.Empty;
-                        entry.Entity.Inactivated = _dateTime.UtcNow;
-                        entry.Entity.InactivatedBy = string.Empty;
-                        entry.Entity.StatusId = 1; //inactive
-                        entry.State = EntityState.Modified;
-                        break;
-                }
-            }
-
-            return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
         }
     }
 }

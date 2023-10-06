@@ -8,7 +8,6 @@ namespace AdoptionManager.Persistance.Configurations.Product
     {
         public void Configure(EntityTypeBuilder<AnimalCategory> builder)
         {
-            builder.Property(ac => ac.Id).UseIdentityColumn();
             builder.Property(ac => ac.CategoryName).HasMaxLength(50).IsRequired();
         }
     }

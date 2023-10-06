@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AdoptionManager.Persistance.Migrations
 {
     [DbContext(typeof(AdoptionDbContext))]
-    [Migration("20230818184446_Initial")]
+    [Migration("20231006090241_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -20,7 +20,7 @@ namespace AdoptionManager.Persistance.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.9")
+                .HasAnnotation("ProductVersion", "7.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -45,7 +45,8 @@ namespace AdoptionManager.Persistance.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(300)
+                        .HasColumnType("character varying(300)");
 
                     b.Property<DateTime?>("Inactivated")
                         .HasColumnType("timestamp with time zone");
@@ -85,34 +86,6 @@ namespace AdoptionManager.Persistance.Migrations
                     b.HasIndex("SurveyId");
 
                     b.ToTable("AdoptionOffers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AnimalId = 1,
-                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(5257),
-                            CreatedBy = "lab.rescue.adopcje@gmail.com",
-                            Description = "Zwierzęta z nadwyżki hodowlanej, lub po nieinwazyjnych testach",
-                            OrganizationId = 1,
-                            QuatntityInStock = 30,
-                            ResidenceAddressId = 1,
-                            StatusId = 0,
-                            SurveyId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            AnimalId = 2,
-                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(5260),
-                            CreatedBy = "kalipso@seed.com",
-                            Description = "Koty znalezione na ulicy",
-                            OrganizationId = 2,
-                            QuatntityInStock = 2,
-                            ResidenceAddressId = 2,
-                            StatusId = 0,
-                            SurveyId = 2
-                        });
                 });
 
             modelBuilder.Entity("AdoptionManager.Domain.Entities.Animals.Animal", b =>
@@ -147,11 +120,13 @@ namespace AdoptionManager.Persistance.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(30)
+                        .HasColumnType("character varying(30)");
 
                     b.Property<string>("Species")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(30)
+                        .HasColumnType("character varying(30)");
 
                     b.Property<int>("StatusId")
                         .HasColumnType("integer");
@@ -159,28 +134,6 @@ namespace AdoptionManager.Persistance.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Animals");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            BirthDate = new DateOnly(2022, 10, 18),
-                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(4621),
-                            CreatedBy = "lab.rescue.adopcje@gmail.com",
-                            Name = "Szczur Wistar",
-                            Species = "Szczur",
-                            StatusId = 0
-                        },
-                        new
-                        {
-                            Id = 2,
-                            BirthDate = new DateOnly(2020, 8, 18),
-                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(4628),
-                            CreatedBy = "kalipso@seed.com",
-                            Name = "Ragdoll",
-                            Species = "Kot",
-                            StatusId = 0
-                        });
                 });
 
             modelBuilder.Entity("AdoptionManager.Domain.Entities.Animals.AnimalCategory", b =>
@@ -193,7 +146,8 @@ namespace AdoptionManager.Persistance.Migrations
 
                     b.Property<string>("CategoryName")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("timestamp with time zone");
@@ -225,41 +179,6 @@ namespace AdoptionManager.Persistance.Migrations
                     b.HasIndex("ParentCategoryId");
 
                     b.ToTable("AnimalCategories");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CategoryName = "Laboratoryjne",
-                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(5334),
-                            CreatedBy = "charlie.b@test.com",
-                            StatusId = 0
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CategoryName = "Domowe",
-                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(5336),
-                            CreatedBy = "charlie.b@test.com",
-                            StatusId = 0
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CategoryName = "Szczury laboratoryjne",
-                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(5338),
-                            CreatedBy = "milva.b@test.com",
-                            ParentCategoryId = 1,
-                            StatusId = 0
-                        },
-                        new
-                        {
-                            Id = 4,
-                            CategoryName = "Gryzonie",
-                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(5339),
-                            CreatedBy = "milva.b@test.com",
-                            StatusId = 0
-                        });
                 });
 
             modelBuilder.Entity("AdoptionManager.Domain.Entities.Product.AdoptionApplication", b =>
@@ -316,32 +235,6 @@ namespace AdoptionManager.Persistance.Migrations
                     b.HasIndex("SiteUserId");
 
                     b.ToTable("ApplicationApplications");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ApplicationStatus = 2,
-                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(5297),
-                            CreatedBy = "sam.w@test.com",
-                            OrderDate = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(5296),
-                            OrganizationId = 1,
-                            ShippingId = 1,
-                            SiteUserId = 3,
-                            StatusId = 0
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ApplicationStatus = 3,
-                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(5299),
-                            CreatedBy = "dean.w@test.com",
-                            OrderDate = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(5299),
-                            OrganizationId = 2,
-                            ShippingId = 2,
-                            SiteUserId = 4,
-                            StatusId = 0
-                        });
                 });
 
             modelBuilder.Entity("AdoptionManager.Domain.Entities.Shipping.ShippingData", b =>
@@ -381,7 +274,9 @@ namespace AdoptionManager.Persistance.Migrations
                         .HasColumnType("integer");
 
                     b.Property<int>("ShipmentStatus")
-                        .HasColumnType("integer");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasDefaultValue(2);
 
                     b.Property<int>("StatusId")
                         .HasColumnType("integer");
@@ -393,30 +288,6 @@ namespace AdoptionManager.Persistance.Migrations
                     b.HasIndex("ShipmentMethodId");
 
                     b.ToTable("Shippings");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 792, DateTimeKind.Utc).AddTicks(8794),
-                            CreatedBy = "lab.rescue.adopcje@gmail.com",
-                            ShipmentAddressId = 3,
-                            ShipmentDate = new DateTime(2023, 8, 28, 18, 44, 46, 792, DateTimeKind.Utc).AddTicks(8779),
-                            ShipmentMethodId = 1,
-                            ShipmentStatus = 2,
-                            StatusId = 0
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 792, DateTimeKind.Utc).AddTicks(8798),
-                            CreatedBy = "kalipso@seed.com",
-                            ShipmentAddressId = 4,
-                            ShipmentDate = new DateTime(2023, 9, 2, 18, 44, 46, 792, DateTimeKind.Utc).AddTicks(8797),
-                            ShipmentMethodId = 2,
-                            ShipmentStatus = 3,
-                            StatusId = 0
-                        });
                 });
 
             modelBuilder.Entity("AdoptionManager.Domain.Entities.Shipping.ShippingMethod", b =>
@@ -435,7 +306,9 @@ namespace AdoptionManager.Persistance.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Description")
-                        .HasColumnType("text");
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("character varying(300)");
 
                     b.Property<DateTime?>("Inactivated")
                         .HasColumnType("timestamp with time zone");
@@ -453,7 +326,9 @@ namespace AdoptionManager.Persistance.Migrations
                         .HasColumnType("integer");
 
                     b.Property<int>("ShippingType")
-                        .HasColumnType("integer");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasDefaultValue(2);
 
                     b.Property<int>("StatusId")
                         .HasColumnType("integer");
@@ -463,28 +338,6 @@ namespace AdoptionManager.Persistance.Migrations
                     b.HasIndex("OrganizationId");
 
                     b.ToTable("ShippingMethods");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 792, DateTimeKind.Utc).AddTicks(8864),
-                            CreatedBy = "lab.rescue.adopcje@gmail.com",
-                            Description = "Klient odbiera zwierzęta samodzielnie z domu tymczasowego",
-                            OrganizationId = 1,
-                            ShippingType = 1,
-                            StatusId = 0
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 792, DateTimeKind.Utc).AddTicks(8866),
-                            CreatedBy = "kalipso@seed.com",
-                            Description = "Wolontariusz przekazuje zwierzaka klientowi",
-                            OrganizationId = 2,
-                            ShippingType = 2,
-                            StatusId = 0
-                        });
                 });
 
             modelBuilder.Entity("AdoptionManager.Domain.Entities.Surveys.Answer", b =>
@@ -522,7 +375,8 @@ namespace AdoptionManager.Persistance.Migrations
 
                     b.Property<string>("Text")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(300)
+                        .HasColumnType("character varying(300)");
 
                     b.Property<int>("UserResponseId")
                         .HasColumnType("integer");
@@ -534,38 +388,6 @@ namespace AdoptionManager.Persistance.Migrations
                     b.HasIndex("UserResponseId");
 
                     b.ToTable("Answers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 792, DateTimeKind.Utc).AddTicks(8974),
-                            CreatedBy = "sam.w@test.com",
-                            QuestionId = 1,
-                            StatusId = 0,
-                            Text = "Tak, kota",
-                            UserResponseId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 792, DateTimeKind.Utc).AddTicks(8976),
-                            CreatedBy = "dean.w@test.com",
-                            QuestionId = 2,
-                            StatusId = 0,
-                            Text = "U rodziców",
-                            UserResponseId = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 792, DateTimeKind.Utc).AddTicks(8977),
-                            CreatedBy = "sam.w@test.com",
-                            QuestionId = 3,
-                            StatusId = 0,
-                            Text = "Klatka Frodo: długość: 78cm, szerokość: 48cm, wysokość: 80cm. odległość między prętami: 1,3cm",
-                            UserResponseId = 1
-                        });
                 });
 
             modelBuilder.Entity("AdoptionManager.Domain.Entities.Surveys.Question", b =>
@@ -603,42 +425,14 @@ namespace AdoptionManager.Persistance.Migrations
 
                     b.Property<string>("Text")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(300)
+                        .HasColumnType("character varying(300)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("SurveyId");
 
                     b.ToTable("Questions");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 792, DateTimeKind.Utc).AddTicks(8936),
-                            CreatedBy = "lab.rescue.adopcje@gmail.com",
-                            StatusId = 0,
-                            SurveyId = 1,
-                            Text = "Czy posiadasz już jakies zwierzęta?"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 792, DateTimeKind.Utc).AddTicks(8938),
-                            CreatedBy = "kalipso@seed.com",
-                            StatusId = 0,
-                            SurveyId = 2,
-                            Text = "Gdzie zwierzę będzie przebywało w czasie urlopu/wakacji?"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 792, DateTimeKind.Utc).AddTicks(8939),
-                            CreatedBy = "lab.rescue.adopcje@gmail.com",
-                            StatusId = 0,
-                            SurveyId = 1,
-                            Text = "Jakie wymiary będzie miała klatka?"
-                        });
                 });
 
             modelBuilder.Entity("AdoptionManager.Domain.Entities.Surveys.Survey", b =>
@@ -658,7 +452,8 @@ namespace AdoptionManager.Persistance.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(300)
+                        .HasColumnType("character varying(300)");
 
                     b.Property<DateTime?>("Inactivated")
                         .HasColumnType("timestamp with time zone");
@@ -677,31 +472,12 @@ namespace AdoptionManager.Persistance.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Surveys");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 792, DateTimeKind.Utc).AddTicks(8902),
-                            CreatedBy = "lab.rescue.adopcje@gmail.com",
-                            Description = "Ankieta adopcji szczurów laboratoryjnych",
-                            StatusId = 0,
-                            Title = "Szczury laboratoryjne"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 792, DateTimeKind.Utc).AddTicks(8903),
-                            CreatedBy = "kalipso@seed.com",
-                            Description = "Ankieta adopcji kotów",
-                            StatusId = 0,
-                            Title = "Koty"
-                        });
                 });
 
             modelBuilder.Entity("AdoptionManager.Domain.Entities.Surveys.UserResponse", b =>
@@ -750,26 +526,6 @@ namespace AdoptionManager.Persistance.Migrations
                     b.HasIndex("SurveyId");
 
                     b.ToTable("UserResponses");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 792, DateTimeKind.Utc).AddTicks(9002),
-                            CreatedBy = "sam.w@test.com",
-                            SiteUserId = 3,
-                            StatusId = 0,
-                            SurveyId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 792, DateTimeKind.Utc).AddTicks(9003),
-                            CreatedBy = "dean.w@test.com",
-                            SiteUserId = 4,
-                            StatusId = 0,
-                            SurveyId = 2
-                        });
                 });
 
             modelBuilder.Entity("AdoptionManager.Domain.Entities.Users.Addresses.Address", b =>
@@ -835,7 +591,8 @@ namespace AdoptionManager.Persistance.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(300)
+                        .HasColumnType("character varying(300)");
 
                     b.Property<DateTime?>("Inactivated")
                         .HasColumnType("timestamp with time zone");
@@ -857,7 +614,8 @@ namespace AdoptionManager.Persistance.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.Property<int?>("Phone")
                         .HasColumnType("integer");
@@ -871,27 +629,6 @@ namespace AdoptionManager.Persistance.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Organizations");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(7992),
-                            CreatedBy = "lab.rescue.adopcje@gmail.com",
-                            Description = "Jedyna w Polsce organizacja zajmująca się adopcją zwierząt laboratoryjnych",
-                            Name = "LabResque",
-                            StatusId = 0
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(7995),
-                            CreatedBy = "kalipso@seed.com",
-                            Description = "Organizacja zajmująca się adopcją zwierząt domowych",
-                            Name = "Kalipso",
-                            Phone = 777777777,
-                            StatusId = 0
-                        });
                 });
 
             modelBuilder.Entity("AdoptionManager.Domain.Entities.Users.SiteUser", b =>
@@ -925,7 +662,9 @@ namespace AdoptionManager.Persistance.Migrations
                         .HasColumnType("text");
 
                     b.Property<int>("Role")
-                        .HasColumnType("integer");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasDefaultValue(2);
 
                     b.Property<int>("StatusId")
                         .HasColumnType("integer");
@@ -933,52 +672,6 @@ namespace AdoptionManager.Persistance.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("SiteUsers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(8221),
-                            CreatedBy = "seeder",
-                            Role = 1,
-                            StatusId = 0
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(8223),
-                            CreatedBy = "seeder",
-                            Phone = "000000000",
-                            Role = 1,
-                            StatusId = 0
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(8224),
-                            CreatedBy = "sam.w@test.com",
-                            Phone = "111111111",
-                            Role = 2,
-                            StatusId = 0
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(8225),
-                            CreatedBy = "dean.w@test.com",
-                            Phone = "222222222",
-                            Role = 2,
-                            StatusId = 0
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 780, DateTimeKind.Utc).AddTicks(8227),
-                            CreatedBy = "jack.k@test.com",
-                            Phone = "333333333",
-                            Role = 2,
-                            StatusId = 0
-                        });
                 });
 
             modelBuilder.Entity("AdoptionOfferAnimalCategory", b =>
@@ -994,23 +687,6 @@ namespace AdoptionManager.Persistance.Migrations
                     b.HasIndex("AnimalCategoriesId");
 
                     b.ToTable("AdoptionOfferAnimalCategory");
-
-                    b.HasData(
-                        new
-                        {
-                            AdoptionOffersId = 1,
-                            AnimalCategoriesId = 3
-                        },
-                        new
-                        {
-                            AdoptionOffersId = 1,
-                            AnimalCategoriesId = 4
-                        },
-                        new
-                        {
-                            AdoptionOffersId = 2,
-                            AnimalCategoriesId = 2
-                        });
                 });
 
             modelBuilder.Entity("AdoptionManager.Domain.Entities.Users.Addresses.OrganizationAddress", b =>
@@ -1023,44 +699,6 @@ namespace AdoptionManager.Persistance.Migrations
                     b.HasIndex("OrganizationId");
 
                     b.HasDiscriminator().HasValue("OrganizationAddress");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 782, DateTimeKind.Utc).AddTicks(1886),
-                            CreatedBy = "lab.rescue.adopcje@gmail.com",
-                            IsDefault = false,
-                            StatusId = 0,
-                            OrganizationId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 782, DateTimeKind.Utc).AddTicks(1888),
-                            CreatedBy = "kalipso@seed.com",
-                            IsDefault = false,
-                            StatusId = 0,
-                            OrganizationId = 2
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 782, DateTimeKind.Utc).AddTicks(1889),
-                            CreatedBy = "lab.rescue.adopcje@gmail.com",
-                            IsDefault = true,
-                            StatusId = 0,
-                            OrganizationId = 1
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 782, DateTimeKind.Utc).AddTicks(1890),
-                            CreatedBy = "kalipso@seed.com",
-                            IsDefault = true,
-                            StatusId = 0,
-                            OrganizationId = 2
-                        });
                 });
 
             modelBuilder.Entity("AdoptionManager.Domain.Entities.Users.Addresses.SiteUserAddress", b =>
@@ -1073,26 +711,6 @@ namespace AdoptionManager.Persistance.Migrations
                     b.HasIndex("SiteUserId");
 
                     b.HasDiscriminator().HasValue("SiteUserAddress");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 3,
-                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 784, DateTimeKind.Utc).AddTicks(9582),
-                            CreatedBy = "sam.w@test.com",
-                            IsDefault = false,
-                            StatusId = 0,
-                            SiteUserId = 3
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Created = new DateTime(2023, 8, 18, 18, 44, 46, 784, DateTimeKind.Utc).AddTicks(9583),
-                            CreatedBy = "dean.w@test.com",
-                            IsDefault = false,
-                            StatusId = 0,
-                            SiteUserId = 4
-                        });
                 });
 
             modelBuilder.Entity("AdoptionManager.Domain.Entities.Animals.AdoptionOffer", b =>
@@ -1245,6 +863,49 @@ namespace AdoptionManager.Persistance.Migrations
                     b.Navigation("Survey");
                 });
 
+            modelBuilder.Entity("AdoptionManager.Domain.Entities.Users.Addresses.Address", b =>
+                {
+                    b.OwnsOne("AdoptionManager.Domain.ValueObjects.AddressObj", "AddressObj", b1 =>
+                        {
+                            b1.Property<int>("AddressId")
+                                .HasColumnType("integer");
+
+                            b1.Property<string>("ApartmentNumber")
+                                .IsRequired()
+                                .HasColumnType("text");
+
+                            b1.Property<string>("BuildingNumber")
+                                .IsRequired()
+                                .HasColumnType("text");
+
+                            b1.Property<string>("City")
+                                .IsRequired()
+                                .HasColumnType("text");
+
+                            b1.Property<string>("Country")
+                                .IsRequired()
+                                .HasColumnType("text");
+
+                            b1.Property<string>("StreetName")
+                                .IsRequired()
+                                .HasColumnType("text");
+
+                            b1.Property<string>("ZipCode")
+                                .IsRequired()
+                                .HasColumnType("text");
+
+                            b1.HasKey("AddressId");
+
+                            b1.ToTable("Addresses");
+
+                            b1.WithOwner()
+                                .HasForeignKey("AddressId");
+                        });
+
+                    b.Navigation("AddressObj")
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("AdoptionManager.Domain.Entities.Users.Organization", b =>
                 {
                     b.OwnsOne("AdoptionManager.Domain.ValueObjects.Email", "Email", b1 =>
@@ -1269,20 +930,6 @@ namespace AdoptionManager.Persistance.Migrations
 
                             b1.WithOwner()
                                 .HasForeignKey("OrganizationId");
-
-                            b1.HasData(
-                                new
-                                {
-                                    OrganizationId = 1,
-                                    DomainName = "gmail.com",
-                                    UserName = "lab.rescue.adopcje"
-                                },
-                                new
-                                {
-                                    OrganizationId = 2,
-                                    DomainName = "seed.com",
-                                    UserName = "kalipso"
-                                });
                         });
 
                     b.Navigation("Email")
@@ -1313,38 +960,6 @@ namespace AdoptionManager.Persistance.Migrations
 
                             b1.WithOwner()
                                 .HasForeignKey("SiteUserId");
-
-                            b1.HasData(
-                                new
-                                {
-                                    SiteUserId = 1,
-                                    DomainName = "test.com",
-                                    UserName = "charlie.b"
-                                },
-                                new
-                                {
-                                    SiteUserId = 2,
-                                    DomainName = "test.com",
-                                    UserName = "milva.b"
-                                },
-                                new
-                                {
-                                    SiteUserId = 3,
-                                    DomainName = "test.com",
-                                    UserName = "sam.w"
-                                },
-                                new
-                                {
-                                    SiteUserId = 4,
-                                    DomainName = "test.com",
-                                    UserName = "dean.w"
-                                },
-                                new
-                                {
-                                    SiteUserId = 5,
-                                    DomainName = "test.com",
-                                    UserName = "jack.k"
-                                });
                         });
 
                     b.OwnsOne("AdoptionManager.Domain.ValueObjects.SiteUserName", "SiteUserName", b1 =>
@@ -1366,38 +981,6 @@ namespace AdoptionManager.Persistance.Migrations
 
                             b1.WithOwner()
                                 .HasForeignKey("SiteUserId");
-
-                            b1.HasData(
-                                new
-                                {
-                                    SiteUserId = 1,
-                                    FirstName = "Charlie",
-                                    LastName = "Bradbury"
-                                },
-                                new
-                                {
-                                    SiteUserId = 2,
-                                    FirstName = "Milva",
-                                    LastName = "Barring"
-                                },
-                                new
-                                {
-                                    SiteUserId = 3,
-                                    FirstName = "Sam",
-                                    LastName = "Winchester"
-                                },
-                                new
-                                {
-                                    SiteUserId = 4,
-                                    FirstName = "Dean",
-                                    LastName = "Winchester"
-                                },
-                                new
-                                {
-                                    SiteUserId = 5,
-                                    FirstName = "Jack",
-                                    LastName = "Kline"
-                                });
                         });
 
                     b.Navigation("Email")
@@ -1430,94 +1013,6 @@ namespace AdoptionManager.Persistance.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.OwnsOne("AdoptionManager.Domain.ValueObjects.AddressObj", "AddressObj", b1 =>
-                        {
-                            b1.Property<int>("OrganizationAddressId")
-                                .HasColumnType("integer");
-
-                            b1.Property<string>("ApartmentNumber")
-                                .IsRequired()
-                                .ValueGeneratedOnUpdateSometimes()
-                                .HasColumnType("text");
-
-                            b1.Property<string>("BuildingNumber")
-                                .IsRequired()
-                                .ValueGeneratedOnUpdateSometimes()
-                                .HasColumnType("text");
-
-                            b1.Property<string>("City")
-                                .IsRequired()
-                                .ValueGeneratedOnUpdateSometimes()
-                                .HasColumnType("text");
-
-                            b1.Property<string>("Country")
-                                .IsRequired()
-                                .ValueGeneratedOnUpdateSometimes()
-                                .HasColumnType("text");
-
-                            b1.Property<string>("StreetName")
-                                .IsRequired()
-                                .ValueGeneratedOnUpdateSometimes()
-                                .HasColumnType("text");
-
-                            b1.Property<string>("ZipCode")
-                                .IsRequired()
-                                .ValueGeneratedOnUpdateSometimes()
-                                .HasColumnType("text");
-
-                            b1.HasKey("OrganizationAddressId");
-
-                            b1.ToTable("Addresses");
-
-                            b1.WithOwner()
-                                .HasForeignKey("OrganizationAddressId");
-
-                            b1.HasData(
-                                new
-                                {
-                                    OrganizationAddressId = 1,
-                                    ApartmentNumber = "1",
-                                    BuildingNumber = "1",
-                                    City = "Gdańsk",
-                                    Country = "Polska",
-                                    StreetName = "Ulica1",
-                                    ZipCode = "11-111"
-                                },
-                                new
-                                {
-                                    OrganizationAddressId = 2,
-                                    ApartmentNumber = "2",
-                                    BuildingNumber = "2",
-                                    City = "Gdynia",
-                                    Country = "Polska",
-                                    StreetName = "Ulica2",
-                                    ZipCode = "22-222"
-                                },
-                                new
-                                {
-                                    OrganizationAddressId = 5,
-                                    ApartmentNumber = "5",
-                                    BuildingNumber = "5",
-                                    City = "Sopot",
-                                    Country = "Polska",
-                                    StreetName = "Ulica5",
-                                    ZipCode = "55-555"
-                                },
-                                new
-                                {
-                                    OrganizationAddressId = 6,
-                                    ApartmentNumber = "6",
-                                    BuildingNumber = "6",
-                                    City = "Malbork",
-                                    Country = "Polska",
-                                    StreetName = "Ulica6",
-                                    ZipCode = "66-666"
-                                });
-                        });
-
-                    b.Navigation("AddressObj")
-                        .IsRequired();
-
                     b.Navigation("Organization");
                 });
 
@@ -1527,74 +1022,6 @@ namespace AdoptionManager.Persistance.Migrations
                         .WithMany("SiteUserAddresses")
                         .HasForeignKey("SiteUserId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.OwnsOne("AdoptionManager.Domain.ValueObjects.AddressObj", "AddressObj", b1 =>
-                        {
-                            b1.Property<int>("SiteUserAddressId")
-                                .HasColumnType("integer");
-
-                            b1.Property<string>("ApartmentNumber")
-                                .IsRequired()
-                                .ValueGeneratedOnUpdateSometimes()
-                                .HasColumnType("text");
-
-                            b1.Property<string>("BuildingNumber")
-                                .IsRequired()
-                                .ValueGeneratedOnUpdateSometimes()
-                                .HasColumnType("text");
-
-                            b1.Property<string>("City")
-                                .IsRequired()
-                                .ValueGeneratedOnUpdateSometimes()
-                                .HasColumnType("text");
-
-                            b1.Property<string>("Country")
-                                .IsRequired()
-                                .ValueGeneratedOnUpdateSometimes()
-                                .HasColumnType("text");
-
-                            b1.Property<string>("StreetName")
-                                .IsRequired()
-                                .ValueGeneratedOnUpdateSometimes()
-                                .HasColumnType("text");
-
-                            b1.Property<string>("ZipCode")
-                                .IsRequired()
-                                .ValueGeneratedOnUpdateSometimes()
-                                .HasColumnType("text");
-
-                            b1.HasKey("SiteUserAddressId");
-
-                            b1.ToTable("Addresses");
-
-                            b1.WithOwner()
-                                .HasForeignKey("SiteUserAddressId");
-
-                            b1.HasData(
-                                new
-                                {
-                                    SiteUserAddressId = 3,
-                                    ApartmentNumber = "3",
-                                    BuildingNumber = "3",
-                                    City = "Ciechanowiec",
-                                    Country = "Polska",
-                                    StreetName = "Ulica3",
-                                    ZipCode = "33-333"
-                                },
-                                new
-                                {
-                                    SiteUserAddressId = 4,
-                                    ApartmentNumber = "4",
-                                    BuildingNumber = "4",
-                                    City = "Warszawa",
-                                    Country = "Polska",
-                                    StreetName = "Ulica4",
-                                    ZipCode = "44-444"
-                                });
-                        });
-
-                    b.Navigation("AddressObj")
                         .IsRequired();
 
                     b.Navigation("SiteUser");

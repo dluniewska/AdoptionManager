@@ -8,7 +8,6 @@ namespace AdoptionManager.Persistance.Configurations.Product
     {
         public void Configure(EntityTypeBuilder<AdoptionOffer> builder)
         {
-            builder.Property(ao => ao.Id).UseIdentityColumn();
             builder.Property(ao => ao.QuatntityInStock).IsRequired();
             builder.Property(ao => ao.Description).HasMaxLength(300).IsRequired();
         }
