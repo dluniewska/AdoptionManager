@@ -11,11 +11,6 @@ namespace AdoptionManager.Domain.ValueObjects
         public string City { get; private set; }
         public string Country { get; private set; }
 
-        public override string ToString()
-        {
-            return $"{StreetName} {BuildingNumber}/{ApartmentNumber}, {ZipCode} {City}, {Country}";
-        }
-
         public AddressObj (string streetName, string buildingNumber, string apartmentNumber, string zipCode, string city, string country)
         {
             StreetName = streetName;

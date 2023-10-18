@@ -54,7 +54,6 @@ namespace AdoptionManager.Persistance
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-            //modelBuilder.SeedData();
         }
 
 
