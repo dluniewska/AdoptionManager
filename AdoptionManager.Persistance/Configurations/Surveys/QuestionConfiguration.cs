@@ -8,7 +8,6 @@ namespace AdoptionManager.Persistance.Configurations.Surveys
     {
         public void Configure(EntityTypeBuilder<Question> builder)
         {
-            builder.Property(q => q.Id).UseIdentityColumn();
             builder.Property(q => q.Text).HasMaxLength(300).IsRequired();
         }
     }

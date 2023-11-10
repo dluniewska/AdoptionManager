@@ -7,10 +7,9 @@ namespace AdoptionManager.Domain.Entities.Users
 {
     public class Organization : AuditableEntity
     {
-
         public string Name { get; set; }
         public string Description { get; set; }
-        public int? Phone { get; set; }
+        public string? Phone { get; set; }
         public int? NIP { get; set; }
         public int? REGON { get; set; }
         public int? KRS { get; set; }

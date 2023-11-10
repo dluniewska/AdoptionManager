@@ -8,7 +8,6 @@ namespace AdoptionManager.Persistance.Configurations.Shipping
     {
         public void Configure(EntityTypeBuilder<ShippingMethod> builder)
         {
-            builder.Property(sm => sm.Id).UseIdentityColumn();
             builder.Property(sm => sm.Description).HasMaxLength(300).IsRequired();
             builder.Property(sm => sm.ShippingType).HasDefaultValue(ShippingType.VOLUNTEER).IsRequired();
         }

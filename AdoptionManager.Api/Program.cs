@@ -35,7 +35,7 @@ builder.Services.AddSwaggerGen(options =>
         {
             Name = "Daria",
             Email = "luniewska.d@gmail.com",
-            Url = new Uri("https://github.com/dluniewska")
+            Url = new Uri("https://www.linkedin.com/in/daria-luniewska/")
         }
     });
     var filePath = Path.Combine(AppContext.BaseDirectory, "AdoptionManager.Api.xml");
@@ -50,6 +50,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
     app.UseDeveloperExceptionPage();
+    await app.SeedDatabaseWithTestData();
 }
 
 app.UseHttpsRedirection();
