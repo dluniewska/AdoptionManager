@@ -14,7 +14,7 @@ namespace AdoptionManager.Domain.Entities.Shipping
 
     public class ShippingData : AuditableEntity
     {
-        public DateTime ShipmentDate { get; set; }
+        public DateTime? ShipmentDate { get; set; }
         public ShipmentStatus ShipmentStatus { get; set; }
 
         public int ShipmentAddressId { get; set; }

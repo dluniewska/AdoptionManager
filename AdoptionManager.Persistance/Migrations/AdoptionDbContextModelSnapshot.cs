@@ -231,7 +231,7 @@ namespace AdoptionManager.Persistance.Migrations
 
                     b.HasIndex("SiteUserId");
 
-                    b.ToTable("ApplicationApplications");
+                    b.ToTable("AdoptionApplications");
                 });
 
             modelBuilder.Entity("AdoptionManager.Domain.Entities.Shipping.ShippingData", b =>
@@ -264,7 +264,7 @@ namespace AdoptionManager.Persistance.Migrations
                     b.Property<int>("ShipmentAddressId")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime>("ShipmentDate")
+                    b.Property<DateTime?>("ShipmentDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("ShipmentMethodId")
@@ -614,8 +614,8 @@ namespace AdoptionManager.Persistance.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("character varying(50)");
 
-                    b.Property<int?>("Phone")
-                        .HasColumnType("integer");
+                    b.Property<string>("Phone")
+                        .HasColumnType("text");
 
                     b.Property<int?>("REGON")
                         .HasColumnType("integer");

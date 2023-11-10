@@ -25,7 +25,7 @@ namespace AdoptionManager.Persistance
         //Product (Adoption Offer)
         public DbSet<Animal> Animals { get; set; }
         public DbSet<AdoptionOffer> AdoptionOffers { get; set; }
-        public DbSet<AdoptionApplication> ApplicationApplications { get; set; }
+        public DbSet<AdoptionApplication> AdoptionApplications { get; set; }
         public DbSet<AnimalCategory> AnimalCategories { get; set; }
 
         //Users
@@ -65,18 +65,18 @@ namespace AdoptionManager.Persistance
                 {
                     case EntityState.Added:
                         entry.Entity.Created = _dateTime.UtcNow;
-                        entry.Entity.CreatedBy = string.Empty;
+                        entry.Entity.CreatedBy = entry.Entity.CreatedBy ?? string.Empty;
                         entry.Entity.StatusId = 0; //active
                         break;
                     case EntityState.Modified:
                         entry.Entity.Modified = _dateTime.UtcNow;
-                        entry.Entity.ModifiedBy = string.Empty;
+                        entry.Entity.ModifiedBy = entry.Entity.ModifiedBy ?? string.Empty;
                         break;
                     case EntityState.Deleted:
                         entry.Entity.Modified = _dateTime.UtcNow;
-                        entry.Entity.ModifiedBy = string.Empty;
+                        entry.Entity.ModifiedBy = entry.Entity.ModifiedBy ?? string.Empty;
                         entry.Entity.Inactivated = _dateTime.UtcNow;
-                        entry.Entity.InactivatedBy = string.Empty;
+                        entry.Entity.InactivatedBy = entry.Entity.InactivatedBy ?? string.Empty;
                         entry.Entity.StatusId = 1; //inactive
                         entry.State = EntityState.Modified;
                         break;

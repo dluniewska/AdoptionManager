@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AdoptionManager.Persistance.Migrations
 {
     [DbContext(typeof(AdoptionDbContext))]
-    [Migration("20231018183257_Initial")]
+    [Migration("20231110223623_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -234,7 +234,7 @@ namespace AdoptionManager.Persistance.Migrations
 
                     b.HasIndex("SiteUserId");
 
-                    b.ToTable("ApplicationApplications");
+                    b.ToTable("AdoptionApplications");
                 });
 
             modelBuilder.Entity("AdoptionManager.Domain.Entities.Shipping.ShippingData", b =>
@@ -267,7 +267,7 @@ namespace AdoptionManager.Persistance.Migrations
                     b.Property<int>("ShipmentAddressId")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime>("ShipmentDate")
+                    b.Property<DateTime?>("ShipmentDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("ShipmentMethodId")
@@ -617,8 +617,8 @@ namespace AdoptionManager.Persistance.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("character varying(50)");
 
-                    b.Property<int?>("Phone")
-                        .HasColumnType("integer");
+                    b.Property<string>("Phone")
+                        .HasColumnType("text");
 
                     b.Property<int?>("REGON")
                         .HasColumnType("integer");

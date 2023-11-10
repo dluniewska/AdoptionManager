@@ -7,7 +7,8 @@ namespace AdoptionManager.Domain.Entities.Shipping
     {
         CLIENT = 1,
         VOLUNTEER = 2,
-        DELIVERY = 3
+        DELIVERY = 3,
+        OTHER = 4
     }
 
     public class ShippingMethod : AuditableEntity

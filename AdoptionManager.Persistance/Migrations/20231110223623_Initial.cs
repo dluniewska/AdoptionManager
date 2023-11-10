@@ -68,7 +68,7 @@ namespace AdoptionManager.Persistance.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     Description = table.Column<string>(type: "character varying(300)", maxLength: 300, nullable: false),
-                    Phone = table.Column<int>(type: "integer", nullable: true),
+                    Phone = table.Column<string>(type: "text", nullable: true),
                     NIP = table.Column<int>(type: "integer", nullable: true),
                     REGON = table.Column<int>(type: "integer", nullable: true),
                     KRS = table.Column<int>(type: "integer", nullable: true),
@@ -318,7 +318,7 @@ namespace AdoptionManager.Persistance.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    ShipmentDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ShipmentDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     ShipmentStatus = table.Column<int>(type: "integer", nullable: false, defaultValue: 2),
                     ShipmentAddressId = table.Column<int>(type: "integer", nullable: false),
                     ShipmentMethodId = table.Column<int>(type: "integer", nullable: false),
@@ -406,7 +406,7 @@ namespace AdoptionManager.Persistance.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ApplicationApplications",
+                name: "AdoptionApplications",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -426,21 +426,21 @@ namespace AdoptionManager.Persistance.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ApplicationApplications", x => x.Id);
+                    table.PrimaryKey("PK_AdoptionApplications", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ApplicationApplications_Organizations_OrganizationId",
+                        name: "FK_AdoptionApplications_Organizations_OrganizationId",
                         column: x => x.OrganizationId,
                         principalTable: "Organizations",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ApplicationApplications_Shippings_ShippingId",
+                        name: "FK_AdoptionApplications_Shippings_ShippingId",
                         column: x => x.ShippingId,
                         principalTable: "Shippings",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ApplicationApplications_SiteUsers_SiteUserId",
+                        name: "FK_AdoptionApplications_SiteUsers_SiteUserId",
                         column: x => x.SiteUserId,
                         principalTable: "SiteUsers",
                         principalColumn: "Id",
@@ -455,6 +455,21 @@ namespace AdoptionManager.Persistance.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Addresses_SiteUserId",
                 table: "Addresses",
+                column: "SiteUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AdoptionApplications_OrganizationId",
+                table: "AdoptionApplications",
+                column: "OrganizationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AdoptionApplications_ShippingId",
+                table: "AdoptionApplications",
+                column: "ShippingId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AdoptionApplications_SiteUserId",
+                table: "AdoptionApplications",
                 column: "SiteUserId");
 
             migrationBuilder.CreateIndex(
@@ -496,21 +511,6 @@ namespace AdoptionManager.Persistance.Migrations
                 name: "IX_Answers_UserResponseId",
                 table: "Answers",
                 column: "UserResponseId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ApplicationApplications_OrganizationId",
-                table: "ApplicationApplications",
-                column: "OrganizationId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ApplicationApplications_ShippingId",
-                table: "ApplicationApplications",
-                column: "ShippingId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ApplicationApplications_SiteUserId",
-                table: "ApplicationApplications",
-                column: "SiteUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Organizations_Email_UserName_Email_DomainName",
@@ -559,13 +559,16 @@ namespace AdoptionManager.Persistance.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "AdoptionApplications");
+
+            migrationBuilder.DropTable(
                 name: "AdoptionOfferAnimalCategory");
 
             migrationBuilder.DropTable(
                 name: "Answers");
 
             migrationBuilder.DropTable(
-                name: "ApplicationApplications");
+                name: "Shippings");
 
             migrationBuilder.DropTable(
                 name: "AdoptionOffers");
@@ -580,7 +583,10 @@ namespace AdoptionManager.Persistance.Migrations
                 name: "UserResponses");
 
             migrationBuilder.DropTable(
-                name: "Shippings");
+                name: "ShippingMethods");
+
+            migrationBuilder.DropTable(
+                name: "Addresses");
 
             migrationBuilder.DropTable(
                 name: "Animals");
@@ -589,16 +595,10 @@ namespace AdoptionManager.Persistance.Migrations
                 name: "Surveys");
 
             migrationBuilder.DropTable(
-                name: "Addresses");
-
-            migrationBuilder.DropTable(
-                name: "ShippingMethods");
+                name: "Organizations");
 
             migrationBuilder.DropTable(
                 name: "SiteUsers");
-
-            migrationBuilder.DropTable(
-                name: "Organizations");
         }
     }
 }
