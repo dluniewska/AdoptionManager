@@ -5,6 +5,8 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <Version>0.0.3</Version>
+    <Authors>Daria Łuniewska</Authors>
   </PropertyGroup>
 
   <ItemGroup>
