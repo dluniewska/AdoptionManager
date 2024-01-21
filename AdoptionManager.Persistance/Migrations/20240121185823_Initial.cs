@@ -24,7 +24,7 @@ namespace AdoptionManager.Persistence.Migrations
                     Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     ModifiedBy = table.Column<string>(type: "text", nullable: true),
                     Modified = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    StatusId = table.Column<int>(type: "integer", nullable: false),
+                    Status = table.Column<int>(type: "integer", nullable: false),
                     InactivatedBy = table.Column<string>(type: "text", nullable: true),
                     Inactivated = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },
@@ -54,7 +54,7 @@ namespace AdoptionManager.Persistence.Migrations
                     Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     ModifiedBy = table.Column<string>(type: "text", nullable: true),
                     Modified = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    StatusId = table.Column<int>(type: "integer", nullable: false),
+                    Status = table.Column<int>(type: "integer", nullable: false),
                     InactivatedBy = table.Column<string>(type: "text", nullable: true),
                     Inactivated = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },
@@ -81,7 +81,7 @@ namespace AdoptionManager.Persistence.Migrations
                     Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     ModifiedBy = table.Column<string>(type: "text", nullable: true),
                     Modified = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    StatusId = table.Column<int>(type: "integer", nullable: false),
+                    Status = table.Column<int>(type: "integer", nullable: false),
                     InactivatedBy = table.Column<string>(type: "text", nullable: true),
                     Inactivated = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },
@@ -106,7 +106,7 @@ namespace AdoptionManager.Persistence.Migrations
                     Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     ModifiedBy = table.Column<string>(type: "text", nullable: true),
                     Modified = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    StatusId = table.Column<int>(type: "integer", nullable: false),
+                    Status = table.Column<int>(type: "integer", nullable: false),
                     InactivatedBy = table.Column<string>(type: "text", nullable: true),
                     Inactivated = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },
@@ -127,7 +127,7 @@ namespace AdoptionManager.Persistence.Migrations
                     Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     ModifiedBy = table.Column<string>(type: "text", nullable: true),
                     Modified = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    StatusId = table.Column<int>(type: "integer", nullable: false),
+                    Status = table.Column<int>(type: "integer", nullable: false),
                     InactivatedBy = table.Column<string>(type: "text", nullable: true),
                     Inactivated = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },
@@ -149,7 +149,7 @@ namespace AdoptionManager.Persistence.Migrations
                     Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     ModifiedBy = table.Column<string>(type: "text", nullable: true),
                     Modified = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    StatusId = table.Column<int>(type: "integer", nullable: false),
+                    Status = table.Column<int>(type: "integer", nullable: false),
                     InactivatedBy = table.Column<string>(type: "text", nullable: true),
                     Inactivated = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },
@@ -184,7 +184,7 @@ namespace AdoptionManager.Persistence.Migrations
                     Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     ModifiedBy = table.Column<string>(type: "text", nullable: true),
                     Modified = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    StatusId = table.Column<int>(type: "integer", nullable: false),
+                    Status = table.Column<int>(type: "integer", nullable: false),
                     InactivatedBy = table.Column<string>(type: "text", nullable: true),
                     Inactivated = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },
@@ -217,7 +217,7 @@ namespace AdoptionManager.Persistence.Migrations
                     Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     ModifiedBy = table.Column<string>(type: "text", nullable: true),
                     Modified = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    StatusId = table.Column<int>(type: "integer", nullable: false),
+                    Status = table.Column<int>(type: "integer", nullable: false),
                     InactivatedBy = table.Column<string>(type: "text", nullable: true),
                     Inactivated = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },
@@ -245,7 +245,7 @@ namespace AdoptionManager.Persistence.Migrations
                     Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     ModifiedBy = table.Column<string>(type: "text", nullable: true),
                     Modified = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    StatusId = table.Column<int>(type: "integer", nullable: false),
+                    Status = table.Column<int>(type: "integer", nullable: false),
                     InactivatedBy = table.Column<string>(type: "text", nullable: true),
                     Inactivated = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },
@@ -282,7 +282,7 @@ namespace AdoptionManager.Persistence.Migrations
                     Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     ModifiedBy = table.Column<string>(type: "text", nullable: true),
                     Modified = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    StatusId = table.Column<int>(type: "integer", nullable: false),
+                    Status = table.Column<int>(type: "integer", nullable: false),
                     InactivatedBy = table.Column<string>(type: "text", nullable: true),
                     Inactivated = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },
@@ -329,7 +329,7 @@ namespace AdoptionManager.Persistence.Migrations
                     Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     ModifiedBy = table.Column<string>(type: "text", nullable: true),
                     Modified = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    StatusId = table.Column<int>(type: "integer", nullable: false),
+                    Status = table.Column<int>(type: "integer", nullable: false),
                     InactivatedBy = table.Column<string>(type: "text", nullable: true),
                     Inactivated = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },
@@ -363,7 +363,7 @@ namespace AdoptionManager.Persistence.Migrations
                     Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     ModifiedBy = table.Column<string>(type: "text", nullable: true),
                     Modified = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    StatusId = table.Column<int>(type: "integer", nullable: false),
+                    Status = table.Column<int>(type: "integer", nullable: false),
                     InactivatedBy = table.Column<string>(type: "text", nullable: true),
                     Inactivated = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },
@@ -423,7 +423,7 @@ namespace AdoptionManager.Persistence.Migrations
                     Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     ModifiedBy = table.Column<string>(type: "text", nullable: true),
                     Modified = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    StatusId = table.Column<int>(type: "integer", nullable: false),
+                    Status = table.Column<int>(type: "integer", nullable: false),
                     InactivatedBy = table.Column<string>(type: "text", nullable: true),
                     Inactivated = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },

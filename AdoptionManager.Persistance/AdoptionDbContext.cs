@@ -66,7 +66,7 @@ namespace AdoptionManager.Persistance
                     case EntityState.Added:
                         entry.Entity.Created = _dateTime.UtcNow;
                         entry.Entity.CreatedBy = entry.Entity.CreatedBy ?? string.Empty;
-                        entry.Entity.StatusId = 0; //active
+                        entry.Entity.Status = 0; //active
                         break;
                     case EntityState.Modified:
                         entry.Entity.Modified = _dateTime.UtcNow;
@@ -77,7 +77,7 @@ namespace AdoptionManager.Persistance
                         entry.Entity.ModifiedBy = entry.Entity.ModifiedBy ?? string.Empty;
                         entry.Entity.Inactivated = _dateTime.UtcNow;
                         entry.Entity.InactivatedBy = entry.Entity.InactivatedBy ?? string.Empty;
-                        entry.Entity.StatusId = 1; //inactive
+                        entry.Entity.Status = 1; //inactive
                         entry.State = EntityState.Modified;
                         break;
                 }

@@ -66,7 +66,7 @@ namespace AdoptionManager.Persistence.Migrations
                     b.Property<int>("ResidenceAddressId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("StatusId")
+                    b.Property<int>("Status")
                         .HasColumnType("integer");
 
                     b.Property<int>("SurveyId")
@@ -134,7 +134,7 @@ namespace AdoptionManager.Persistence.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("character varying(30)");
 
-                    b.Property<int>("StatusId")
+                    b.Property<int>("Status")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
@@ -177,7 +177,7 @@ namespace AdoptionManager.Persistence.Migrations
                     b.Property<int?>("ParentCategoryId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("StatusId")
+                    b.Property<int>("Status")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
@@ -229,7 +229,7 @@ namespace AdoptionManager.Persistence.Migrations
                     b.Property<int>("SiteUserId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("StatusId")
+                    b.Property<int>("Status")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
@@ -284,7 +284,7 @@ namespace AdoptionManager.Persistence.Migrations
                         .HasColumnType("integer")
                         .HasDefaultValue(2);
 
-                    b.Property<int>("StatusId")
+                    b.Property<int>("Status")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
@@ -336,7 +336,7 @@ namespace AdoptionManager.Persistence.Migrations
                         .HasColumnType("integer")
                         .HasDefaultValue(2);
 
-                    b.Property<int>("StatusId")
+                    b.Property<int>("Status")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
@@ -376,7 +376,7 @@ namespace AdoptionManager.Persistence.Migrations
                     b.Property<int>("QuestionId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("StatusId")
+                    b.Property<int>("Status")
                         .HasColumnType("integer");
 
                     b.Property<string>("Text")
@@ -423,7 +423,7 @@ namespace AdoptionManager.Persistence.Migrations
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("text");
 
-                    b.Property<int>("StatusId")
+                    b.Property<int>("Status")
                         .HasColumnType("integer");
 
                     b.Property<int>("SurveyId")
@@ -473,7 +473,7 @@ namespace AdoptionManager.Persistence.Migrations
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("text");
 
-                    b.Property<int>("StatusId")
+                    b.Property<int>("Status")
                         .HasColumnType("integer");
 
                     b.Property<string>("Title")
@@ -519,7 +519,7 @@ namespace AdoptionManager.Persistence.Migrations
                     b.Property<int>("SiteUserId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("StatusId")
+                    b.Property<int>("Status")
                         .HasColumnType("integer");
 
                     b.Property<int>("SurveyId")
@@ -568,7 +568,7 @@ namespace AdoptionManager.Persistence.Migrations
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("text");
 
-                    b.Property<int>("StatusId")
+                    b.Property<int>("Status")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
@@ -629,7 +629,7 @@ namespace AdoptionManager.Persistence.Migrations
                     b.Property<int?>("REGON")
                         .HasColumnType("integer");
 
-                    b.Property<int>("StatusId")
+                    b.Property<int>("Status")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
@@ -672,7 +672,7 @@ namespace AdoptionManager.Persistence.Migrations
                         .HasColumnType("integer")
                         .HasDefaultValue(2);
 
-                    b.Property<int>("StatusId")
+                    b.Property<int>("Status")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");

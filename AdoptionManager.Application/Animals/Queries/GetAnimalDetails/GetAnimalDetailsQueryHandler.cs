@@ -15,7 +15,7 @@ namespace AdoptionManager.Application.Animals.Queries.GetAnimalDetails
         public async Task<AnimalDetailsVm> Handle(GetAnimalDetailsQuery request, CancellationToken cancellationToken)
         {
             var animal = await _adoptionDbContext.Animals
-                .Where(a => a.Id == request.AnimalId)
+                .Where(a => a.Id == request.AnimalId && a.Status == 0)
                 .Select(a => new AnimalDetailsVm
                 {
                     Name = a.Name,
