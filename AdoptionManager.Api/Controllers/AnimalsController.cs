@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AdoptionManager.Application.Animals.Queries.GetAnimalDetails;
+using AdoptionManager.Application.Animals.Queries.GetAnimals;
+using AdoptionManager.Domain.Entities.Animals;
+using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
 
@@ -7,9 +11,8 @@ namespace AdoptionManager.Api.Controllers
     /// <summary>
     /// Controller for managing animals
     /// </summary>
-    [Route("api/[controller]")]
-    [ApiController]
-    public class AnimalsController : ControllerBase
+    [Route("api/animals")]
+    public class AnimalsController : BaseController
     {
         /// <summary>
         /// Get list of animals
@@ -17,9 +20,10 @@ namespace AdoptionManager.Api.Controllers
         /// <returns></returns>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<object>))]
-        public async Task<IActionResult> GetAnimals()
+        public async Task<ActionResult<IEnumerable<AnimalDto>>> GetAnimals()
         {
-            return Ok();
+            var vm = await Mediator.Send(new GetAnimalsQuery());
+            return Ok(vm.Animals);
         }
 
         /// <summary>
@@ -29,9 +33,10 @@ namespace AdoptionManager.Api.Controllers
         /// <returns></returns>
         [HttpGet("{animalId}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<object>))]
-        public async Task<IActionResult> GetAdoptionApplication(int animalId)
+        public async Task<ActionResult<AnimalDetailsVm>> GetAnimal(int animalId)
         {
-            return Ok();
+            var vm = await Mediator.Send(new GetAnimalDetailsQuery() { AnimalId = animalId });
+            return Ok(vm);
         }
 
         /// <summary>

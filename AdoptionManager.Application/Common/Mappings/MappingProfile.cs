@@ -20,7 +20,7 @@ namespace AdoptionManager.Application.Common.Mappings
             {
                 var instance = Activator.CreateInstance(type);
                 var methodInfo = type.GetMethod("Mapping");
-                methodInfo?.Invoke(instance, new object[] { type });
+                methodInfo?.Invoke(instance, new object[] { this });
             }
         }
     }
