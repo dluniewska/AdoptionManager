@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -7,8 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Animals\Queries\" />
     <Folder Include="Common\Exceptions\" />
     <Folder Include="Common\Behaviours\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.11" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AdoptionManager.Domain\AdoptionManager.Domain.csproj" />
   </ItemGroup>
 
 </Project>

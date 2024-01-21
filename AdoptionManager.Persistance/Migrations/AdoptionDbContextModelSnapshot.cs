@@ -8,7 +8,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace AdoptionManager.Persistance.Migrations
+namespace AdoptionManager.Persistence.Migrations
 {
     [DbContext(typeof(AdoptionDbContext))]
     partial class AdoptionDbContextModelSnapshot : ModelSnapshot
@@ -93,14 +93,23 @@ namespace AdoptionManager.Persistance.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<DateOnly>("BirthDate")
+                    b.Property<DateOnly?>("BirthDate")
                         .HasColumnType("date");
+
+                    b.Property<string>("Breed")
+                        .HasColumnType("text");
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("CreatedBy")
                         .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateOnly?>("DateOfArrival")
+                        .HasColumnType("date");
+
+                    b.Property<string>("HealthStatus")
                         .HasColumnType("text");
 
                     b.Property<DateTime?>("Inactivated")

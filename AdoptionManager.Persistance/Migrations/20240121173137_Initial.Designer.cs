@@ -9,10 +9,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace AdoptionManager.Persistance.Migrations
+namespace AdoptionManager.Persistence.Migrations
 {
     [DbContext(typeof(AdoptionDbContext))]
-    [Migration("20231110223623_Initial")]
+    [Migration("20240121173137_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -96,14 +96,23 @@ namespace AdoptionManager.Persistance.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<DateOnly>("BirthDate")
+                    b.Property<DateOnly?>("BirthDate")
                         .HasColumnType("date");
+
+                    b.Property<string>("Breed")
+                        .HasColumnType("text");
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("CreatedBy")
                         .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateOnly?>("DateOfArrival")
+                        .HasColumnType("date");
+
+                    b.Property<string>("HealthStatus")
                         .HasColumnType("text");
 
                     b.Property<DateTime?>("Inactivated")

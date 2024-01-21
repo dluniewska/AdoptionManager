@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace AdoptionManager.Persistance.Migrations
+namespace AdoptionManager.Persistence.Migrations
 {
     /// <inheritdoc />
     public partial class Initial : Migration
@@ -45,8 +45,11 @@ namespace AdoptionManager.Persistance.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "character varying(30)", maxLength: 30, nullable: false),
-                    BirthDate = table.Column<DateOnly>(type: "date", nullable: false),
+                    BirthDate = table.Column<DateOnly>(type: "date", nullable: true),
+                    DateOfArrival = table.Column<DateOnly>(type: "date", nullable: true),
                     Species = table.Column<string>(type: "character varying(30)", maxLength: 30, nullable: false),
+                    Breed = table.Column<string>(type: "text", nullable: true),
+                    HealthStatus = table.Column<string>(type: "text", nullable: true),
                     CreatedBy = table.Column<string>(type: "text", nullable: false),
                     Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     ModifiedBy = table.Column<string>(type: "text", nullable: true),

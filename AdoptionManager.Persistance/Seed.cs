@@ -29,8 +29,8 @@ namespace AdoptionManager.Persistance
                     var organizationLabResq = GetOrganization("LabResq", "Jedyna w Polsce organizacja zajmująca się adopcją zwierząt laboratoryjnych", null, "labresq.adopcje@gmail.com");
                     var organizationKalipso = GetOrganization("Kalipso", "Organizacja zajmująca się adopcją zwierząt domowych", "777777777", "kalipso@seed.com");
 
-                    var animalRat = GetAnimal("Szczur Wistar", "Szczur", DateOnly.FromDateTime(DateTime.UtcNow.AddMonths(-10)), organizationLabResq);
-                    var animalCat = GetAnimal("Ragdoll", "Kot", DateOnly.FromDateTime(DateTime.UtcNow.AddYears(-3)), organizationKalipso);
+                    var animalRat = GetAnimal("Szczur laboratoryjny", "Szczur", "Wistar", DateOnly.FromDateTime(DateTime.UtcNow.AddMonths(-10)), DateOnly.FromDateTime(DateTime.UtcNow.AddMonths(-2)), organizationLabResq);
+                    var animalCat = GetAnimal("Kot rasowy", "Kot", "Ragdoll", DateOnly.FromDateTime(DateTime.UtcNow.AddYears(-3)), DateOnly.FromDateTime(DateTime.UtcNow.AddMonths(-6)), organizationKalipso);
 
                     var surveyRats = GetSurvey("Ankieta adopcji szczurów laboratoryjnych", "Szczury laboratoryjne", organizationLabResq);
                     var surveyCats = GetSurvey("Ankieta adopcji kotów", "Koty", organizationKalipso);
@@ -69,6 +69,9 @@ namespace AdoptionManager.Persistance
                     adoptionOfferRat.AnimalCategories.AddRange(new List<AnimalCategory> { animalCategoryLabRat, animalCategoryRod });
                     adoptionOfferCat.AnimalCategories.Add(animalCategoryDom);
 
+                    var adoptionApplicationRats = GetAdoptionApplication(siteUserSam, ApplicationStatus.PENDING, organizationLabResq, shippingRats, DateTime.UtcNow.AddMonths(1));
+
+
                     if (!context.Animals.Any())
                     {
                         await context.Animals.AddRangeAsync(new List<Animal>() { animalRat, animalCat });
@@ -84,7 +87,7 @@ namespace AdoptionManager.Persistance
                     }
                     if (!context.AdoptionApplications.Any())
                     {
-                        await context.AdoptionApplications.AddRangeAsync(new List<AdoptionApplication> { });
+                        await context.AdoptionApplications.AddRangeAsync(new List<AdoptionApplication> { adoptionApplicationRats });
                     }
                     if (!context.Organizations.Any())
                     {
@@ -134,13 +137,15 @@ namespace AdoptionManager.Persistance
         }
 
 
-        private static Animal GetAnimal(string name, string species, DateOnly birthDate, Organization organization)
+        private static Animal GetAnimal(string name, string species, string breed, DateOnly birthDate, DateOnly dateOfArrival, Organization organization)
         {
             return new Animal()
             {
                 Name = name,
                 Species = species,
+                Breed = breed,
                 BirthDate = birthDate,
+                DateOfArrival = dateOfArrival,
                 CreatedBy = organization.Email.ToString()
             };
         }
