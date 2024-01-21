@@ -10,7 +10,7 @@ var allowedOrigins = builder.Configuration.GetSection("AllowedOrigins").Get<List
 
 // Add services to the container.
 
-builder.Services.AddPersistance(builder.Configuration);
+builder.Services.AddPersistence(builder.Configuration);
 builder.Services.AddInfrastructure(builder.Configuration);
 
 builder.Services.AddControllers();

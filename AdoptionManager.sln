@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdoptionManager.Domain", "A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdoptionManager.Infrastructure", "AdoptionManager.Infrastructure\AdoptionManager.Infrastructure.csproj", "{E7380EA6-1DAC-4754-9767-106DBAFBA8D6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdoptionManager.Persistance", "AdoptionManager.Persistance\AdoptionManager.Persistance.csproj", "{ED4FE039-B296-403A-93CC-2219FCBC7AC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdoptionManager.Persistence", "AdoptionManager.Persistance\AdoptionManager.Persistence.csproj", "{ED4FE039-B296-403A-93CC-2219FCBC7AC5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdoptionManager.Api", "AdoptionManager.Api\AdoptionManager.Api.csproj", "{F255E8E9-93A2-40C1-90A8-82B5BC355FB3}"
 EndProject

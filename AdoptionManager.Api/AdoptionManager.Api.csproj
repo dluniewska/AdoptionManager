@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AdoptionManager.Infrastructure\AdoptionManager.Infrastructure.csproj" />
-    <ProjectReference Include="..\AdoptionManager.Persistance\AdoptionManager.Persistance.csproj" />
+    <ProjectReference Include="..\AdoptionManager.Persistance\AdoptionManager.Persistence.csproj" />
   </ItemGroup>
 
 </Project>
