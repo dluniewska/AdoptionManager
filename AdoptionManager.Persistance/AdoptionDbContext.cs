@@ -11,7 +11,7 @@ using System.Reflection;
 
 namespace AdoptionManager.Persistance
 {
-    public class AdoptionDbContext : DbContext
+    public class AdoptionDbContext : DbContext, IAdoptionDbContext
     {
         private readonly IDateTime _dateTime;
 
