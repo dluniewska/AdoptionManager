@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Animals\Commands\" />
+    <Folder Include="Animals\Commands\DeleteAnimal\" />
+    <Folder Include="Animals\Commands\UpdateAnimal\" />
     <Folder Include="Common\Exceptions\" />
     <Folder Include="Common\Behaviours\" />
   </ItemGroup>
